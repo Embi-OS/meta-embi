@@ -1,7 +1,7 @@
 
 ### Shell environment set up for building Embi OS image. ###
 
-You can now run 'bitbake <target>'
+You can now run 'BB_NUMBER_THREADS="6" bitbake <target>'
 
 Common targets are:
     b2qt-embedded-qt6-image
@@ -9,9 +9,8 @@ Common targets are:
 
 QBSP target is:
     meta-b2qt-embedded-qbsp
+    
+If you only want to fetch source before running the build, simply add '--runall=fetch'
 
-For creating toolchain or QBSP for Windows, set environment variable before running bitbake:
-    SDKMACHINE=x86_64-mingw32
-
-For more information about Boot to Qt, see https://doc.qt.io/QtForDeviceCreation/
+For more information about Embi OS, see https://github.com/Romain-Donze/
 
