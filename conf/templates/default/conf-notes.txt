@@ -1,0 +1,15 @@
+
+### Shell environment set up for builds. ###
+
+You can now run 'bitbake <target>'
+
+Common targets are:
+    embi-os-image
+    embi-os-toolchain
+
+QBSP target is:
+    embi-os-qbsp
+
+For creating toolchain or QBSP for Windows, set environment variable before running bitbake:
+    SDKMACHINE=x86_64-mingw32
+
