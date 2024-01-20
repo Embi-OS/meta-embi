@@ -23,12 +23,6 @@ ENABLE_UART = "1"
 KERNEL_MODULE_AUTOLOAD:rpi += " i2c-dev i2c-bcm2708"
 
 RPI_EXTRA_CONFIG:append = " \n\
-# Automatically load overlays for detected DSI displays \n\
 display_auto_detect=1 \n\
-"
-
-RPI_EXTRA_CONFIG:append = " \n\
-# Enable waveshare panel \n\
 dtoverlay=vc4-kms-dsi-waveshare-panel,7_0_inchC,i2c1 \n\
 "
-
