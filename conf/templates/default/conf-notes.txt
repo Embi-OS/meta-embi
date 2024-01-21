@@ -12,5 +12,5 @@ QBSP target is:
     
 If you only want to fetch source before running the build, simply add '--runall=fetch'
 
-For more information about Embi OS, see https://github.com/Romain-Donze/
+For more information about Embi OS, see https://github.com/Embi-OS/
 
