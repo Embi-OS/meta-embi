@@ -54,3 +54,31 @@ A test can then be run by executing:
 speaker-test -t wav -c 2 -l 1
 ```
 
+# Standard config.txt
+/boot/config.txt may also be edited so it ends with:
+```bash
+# Uncomment some or all of these to enable the optional hardware interfaces
+dtparam=i2c_arm=on
+dtparam=i2s=on
+dtparam=spi=on
+enable_uart=1
+
+# Enable VC4 Graphics
+dtoverlay=vc4-kms-v3d,noaudio
+max_framebuffers=2
+
+# Enable USB host mode
+dtoverlay=dwc2,dr_mode=host
+
+# Enable the onboard ALSA audio 
+dtparam=audio=off
+ 
+# Automatically load overlays for detected DSI displays 
+display_auto_detect=1 
+ 
+# Enable waveshare panel 
+dtoverlay=vc4-kms-dsi-waveshare-panel,7_0_inchC,i2c1 
+
+# Enable WM8960
+dtoverlay=wm8960-soundcard
+```
