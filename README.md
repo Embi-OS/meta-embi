@@ -43,6 +43,11 @@ amixer -c0 sset 'Left Output Mixer PCM' toggle
 amixer -c0 sset 'Right Input Mixer Boost' toggle
 amixer -c0 sset 'Right Output Mixer PCM' toggle
 ```
+You may also have to disable other audio cards in /boot/config.txt
+```bash
+dtoverlay=vc4-kms-v3d,noaudio
+dtparam=audio=off
+```
 
 A test can then be run by executing:
 ```bash
