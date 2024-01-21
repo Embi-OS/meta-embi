@@ -38,10 +38,10 @@ You may need to adjust volume and toggle switches that are off by default
 ```bash
 amixer -c0 sset 'Headphone',0 80%,80%
 amixer -c0 sset 'Speaker',0 80%,80%
-amixer -c0 sset 'Left Input Mixer Boost' toggle
-amixer -c0 sset 'Left Output Mixer PCM' toggle
-amixer -c0 sset 'Right Input Mixer Boost' toggle
-amixer -c0 sset 'Right Output Mixer PCM' toggle
+amixer -c0 sset 'Left Input Mixer Boost' on
+amixer -c0 sset 'Left Output Mixer PCM' on
+amixer -c0 sset 'Right Input Mixer Boost' on
+amixer -c0 sset 'Right Output Mixer PCM' on
 ```
 You may also have to disable other audio cards in /boot/config.txt
 ```bash
