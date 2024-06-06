@@ -11,10 +11,6 @@ QT_EDITION = "commercial"
 QT_COMMERCIAL_MODULES = "1"
 MACHINE_FEATURES:append = " wm8960"
 
-RPI_KERNEL_DEVICETREE_OVERLAYS:append = " \
-    overlays/vc4-kms-dsi-waveshare-panel.dtbo \
-"
-
 ENABLE_DWC2_PERIPHERAL = "0"
 ENABLE_DWC2_HOST = "1"
 ENABLE_I2C = "1"
