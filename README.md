@@ -7,7 +7,7 @@ For a basic first build simply run the following commands
 curl https://storage.googleapis.com/git-repo-downloads/repo > ~/.local/bin/repo
 chmod a+rx ~/.local/bin/repo
 
-repo init -u https://github.com/Embi-OS/embi-manifest -m latest.xml
+repo init -u https://github.com/Embi-OS/embi-manifest -m stable.xml
 repo sync
 
 export MACHINE=raspberrypi-armv8 && source ./setup-environment.sh
