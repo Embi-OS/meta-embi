@@ -10,7 +10,7 @@ chmod a+rx ~/.local/bin/repo
 repo init -u https://github.com/Embi-OS/embi-manifest -m latest.xml
 repo sync
 
-export MACHINE=raspberrypi4-64 && source ./setup-environment.sh
+export MACHINE=raspberrypi-armv8 && source ./setup-environment.sh
 
 BB_NUMBER_THREADS="6" bitbake meta-b2qt-embedded-qbsp --runall=fetch
 BB_NUMBER_THREADS="6" bitbake meta-b2qt-embedded-qbsp
