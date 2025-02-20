@@ -17,6 +17,7 @@ PACKAGES += " \
     packagegroup-embi-canbus \
     packagegroup-embi-samba \
     packagegroup-embi-alsa \
+    packagegroup-embi-network \
 "
 
 RDEPENDS:packagegroup-embi = "\
@@ -24,6 +25,7 @@ RDEPENDS:packagegroup-embi = "\
     packagegroup-embi-canbus \
     packagegroup-embi-samba \
     packagegroup-embi-alsa \
+    packagegroup-embi-network \
 "
 
 SUMMARY:packagegroup-base-embi-base = "Recommended for any image"
@@ -54,4 +56,11 @@ RRECOMMENDS:packagegroup-embi-alsa = "\
     alsa-plugins \
     alsa-utils-aplay \
     alsa-utils-amixer \
+"
+
+SUMMARY:packagegroup-embi-network = "Recommended for using NetworkManager"
+RRECOMMENDS:packagegroup-embi-network = "\
+    networkmanager \
+    networkmanager-nmcli \
+    modemmanager \
 "
