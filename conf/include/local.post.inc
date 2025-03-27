@@ -11,6 +11,9 @@ QT_EDITION = "commercial"
 QT_COMMERCIAL_MODULES = "1"
 MACHINE_FEATURES:append = " wm8960"
 
+# remove webengine for faster build time
+DISTRO_FEATURES:remove = "webengine ld-is-gold"
+
 ENABLE_DWC2_PERIPHERAL = "0"
 ENABLE_DWC2_HOST = "1"
 ENABLE_I2C = "1"
