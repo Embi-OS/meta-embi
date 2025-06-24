@@ -5,7 +5,7 @@
 ############################################################################
 
 # include boot2qt config
-include conf/distro/include/boot2qt.inc
+include conf/include/boot2qt.inc
 
 # include mender config
-#include conf/distro/include/mender.inc
+#include conf/include/mender.inc
