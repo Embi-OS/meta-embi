@@ -14,7 +14,8 @@ QT_COMMERCIAL_MODULES = "1"
 USE_QT_DEMO_LAUNCHER = "0"
 
 # remove webengine for faster build time
-DISTRO_FEATURES:remove = "webengine ld-is-gold"
+DISTRO_FEATURES:remove = "webengine"
+DISTRO_FEATURES:remove = "ld-is-gold"
 
 # remove debug-tweaks for production build
 IMAGE_FEATURES:remove = "debug-tweaks"
