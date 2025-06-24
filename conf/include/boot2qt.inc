@@ -24,7 +24,7 @@ DISTRO_FEATURES:remove = "wayland vulkan"
 #EXTRA_IMAGE_FEATURES:remove = "debug-tweaks"
 
 # Qt build configuration
-ENABLE_QTBASE_LTCG = "0"
+ENABLE_QTBASE_LTCG = "1"
 ENABLE_QTBASE_OPTIMIZE_SIZE = "0"
 ENABLE_QTBASE_STATIC = "1"
 
