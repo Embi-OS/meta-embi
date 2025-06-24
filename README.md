@@ -14,6 +14,14 @@ export MACHINE=raspberrypi-armv8 && source ./setup-environment.sh
 
 BB_NUMBER_THREADS="6" bitbake meta-b2qt-embedded-qbsp --runall=fetch
 BB_NUMBER_THREADS="6" bitbake meta-b2qt-embedded-qbsp
+
+# Print DISTRO_FEATURES content
+bitbake -e meta-b2qt-embedded-qbsp | grep "^DISTRO_FEATURES"
+bitbake -e meta-b2qt-embedded-qbsp | grep "^IMAGE_FEATURES"
+bitbake -e meta-b2qt-embedded-qbsp | grep "^EXTRA_IMAGE_FEATURES"
+
+# Clean
+bitbake -c cleanall meta-b2qt-embedded-qbsp
 ```
 Once the build is done, the image is located in this folder and can directly be used with the pi-imager:
 ```filenames
