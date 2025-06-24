@@ -21,6 +21,9 @@ bitbake -e meta-b2qt-embedded-qbsp | grep "^DISTRO_FEATURES"
 bitbake -e meta-b2qt-embedded-qbsp | grep "^IMAGE_FEATURES"
 bitbake -e meta-b2qt-embedded-qbsp | grep "^EXTRA_IMAGE_FEATURES"
 
+# Print PACKAGECONFIG content for qtbase
+bitbake -e qtbase | grep "^PACKAGECONFIG"
+
 # Clean
 bitbake -c cleanall meta-b2qt-embedded-qbsp
 ```
