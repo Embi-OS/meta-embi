@@ -17,7 +17,7 @@ USE_QT_DEMO_LAUNCHER = "0"
 DISTRO_FEATURES:remove = "webengine ld-is-gold"
 
 # remove wayland for lighter image
-DISTRO_FEATURES:remove = "wayland"
+DISTRO_FEATURES:remove = "wayland vulkan"
 
 # remove debug-tweaks for production build
 #IMAGE_FEATURES:remove = "debug-tweaks"
