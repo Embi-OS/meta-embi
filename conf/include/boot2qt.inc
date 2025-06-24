@@ -25,7 +25,7 @@ DISTRO_FEATURES:remove = "wayland"
 
 # Qt build configuration
 ENABLE_QTBASE_LTCG = "0"
-ENABLE_QTBASE_OPTIMIZE_SIZE = "1"
+ENABLE_QTBASE_OPTIMIZE_SIZE = "0"
 ENABLE_QTBASE_STATIC = "1"
 
 # append locales
