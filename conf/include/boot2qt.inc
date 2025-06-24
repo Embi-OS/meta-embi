@@ -23,7 +23,7 @@ DISTRO_FEATURES:remove = "webengine ld-is-gold"
 # Qt build configuration
 ENABLE_QTBASE_LTCG = "0"
 ENABLE_QTBASE_OPTIMIZE_SIZE = "0"
-ENABLE_QTBASE_STATIC = "0"
+ENABLE_QTBASE_STATIC = "1"
 
 # append locales
 IMAGE_LINGUAS:append = " \
