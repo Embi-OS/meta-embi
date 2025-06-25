@@ -27,6 +27,8 @@ RRECOMMENDS:packagegroup-base-rpi-cli = "\
     e2fsprogs-mke2fs \
     iproute2 \
     libgomp \
+    libgpiod \
+    libgpiod-dev \
     libgpiod-tools \
     uhubctl \
     util-linux-fstrim \
