@@ -13,8 +13,8 @@ repo sync
 export MACHINE=raspberrypi-armv8 && source ./setup-environment.sh
 
 BB_NUMBER_THREADS="6" bitbake meta-b2qt-embedded-qbsp --runall=fetch
-BB_NUMBER_THREADS="6" bitbake meta-b2qt-embedded-qbsp
-BB_NUMBER_THREADS="6" bitbake meta-b2qt-embedded-qbsp && echo "Build finished at $(date)"
+BB_NICE_LEVEL="19" BB_NUMBER_THREADS="6" bitbake meta-b2qt-embedded-qbsp
+BB_NICE_LEVEL="19" BB_NUMBER_THREADS="6" bitbake meta-b2qt-embedded-qbsp && echo "Build finished at $(date)"
 
 # Print DISTRO_FEATURES content
 bitbake -e meta-b2qt-embedded-qbsp | grep "^DISTRO_FEATURES"
