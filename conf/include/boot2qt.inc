@@ -26,6 +26,14 @@ DISTRO_FEATURES:remove = "wayland vulkan"
 # Qt build configuration
 BB_ENV_PASSTHROUGH_ADDITIONS += "EMBI_QTBASE_OPTIMIZE_SIZE EMBI_QTBASE_STATIC EMBI_QTBASE_LTCG"
 
+python () {
+    import os
+    if os.environ.get("EMBI_TEST", ""):
+        d.setVar("EMBI_TEST", "hello")
+}
+
+EMBI_TEST ?= "world"
+
 EMBI_QTBASE_OPTIMIZE_SIZE ?= "0"
 EMBI_QTBASE_STATIC ?= "0"
 EMBI_QTBASE_LTCG ?= "0"
