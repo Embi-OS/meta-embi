@@ -14,9 +14,7 @@ inherit extrausers
 
 # Hash generated with "printf "%q" $(mkpasswd -m sha256crypt <password>)"
 
-BB_ENV_PASSTHROUGH_ADDITIONS += " \
-    EMBI_ROOT_PASSWORD \
-    "
+BB_ENV_PASSTHROUGH_ADDITIONS += "EMBI_ROOT_PASSWORD"
 EMBI_ROOT_PASSWORD ?= ""
 
 EXTRA_USERS_PARAMS = " \
