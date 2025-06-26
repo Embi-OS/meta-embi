@@ -28,6 +28,8 @@ EMBI_QTBASE_OPTIMIZE_SIZE ?= "0"
 EMBI_QTBASE_STATIC ?= "0"
 EMBI_QTBASE_LTCG ?= "0"
 
+DEPLOY_CONF_NAME:append = "${@'-static' if bb.utils.to_boolean(d.getVar('EMBI_QTBASE_STATIC')) else ''}"
+
 # append locales
 IMAGE_LINGUAS:append = " \
     fr-fr \
