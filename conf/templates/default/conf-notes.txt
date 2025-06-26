@@ -1,7 +1,7 @@
 
 ### Shell environment set up for building Embi OS image. ###
 
-You can now run 'BB_NUMBER_THREADS="6" bitbake <target>'
+You can now run 'bitbake <target>'
 
 Common targets are:
     b2qt-embedded-qt6-image

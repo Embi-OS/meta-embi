@@ -24,9 +24,9 @@ DISTRO_FEATURES:remove = "wayland vulkan"
 #EXTRA_IMAGE_FEATURES:remove = "debug-tweaks"
 
 # Qt build configuration
-ENABLE_QTBASE_OPTIMIZE_SIZE = "1"
-ENABLE_QTBASE_STATIC = "1"
-ENABLE_QTBASE_LTCG = "1"
+EMBI_QTBASE_OPTIMIZE_SIZE ??= "0"
+EMBI_QTBASE_STATIC ??= "0"
+EMBI_QTBASE_LTCG ??= "0"
 
 # append locales
 IMAGE_LINGUAS:append = " \

@@ -12,11 +12,11 @@ repo sync
 
 export MACHINE=raspberrypi-armv8 && source ./setup-environment.sh
 
-BB_NICE_LEVEL="19" BB_NUMBER_THREADS="6" bitbake meta-b2qt-embedded-qbsp --runall=fetch
-BB_NICE_LEVEL="19" BB_NUMBER_THREADS="6" bitbake meta-b2qt-embedded-qbsp
-BB_NICE_LEVEL="19" BB_NUMBER_THREADS="6" bitbake meta-b2qt-embedded-qbsp && echo "Build finished at $(date)"
+bitbake meta-b2qt-embedded-qbsp --runall=fetch
+bitbake meta-b2qt-embedded-qbsp
+bitbake meta-b2qt-embedded-qbsp && echo "Build finished at $(date)"
 
-# Print DISTRO_FEATURES content
+# Print VARIABLE content
 bitbake -e meta-b2qt-embedded-qbsp | grep "^DISTRO_FEATURES"
 bitbake -e meta-b2qt-embedded-qbsp | grep "^IMAGE_FEATURES"
 bitbake -e meta-b2qt-embedded-qbsp | grep "^EXTRA_IMAGE_FEATURES"
