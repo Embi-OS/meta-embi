@@ -24,21 +24,11 @@ DISTRO_FEATURES:remove = "wayland vulkan"
 #EXTRA_IMAGE_FEATURES:remove = "debug-tweaks"
 
 # Qt build configuration
-BB_ENV_PASSTHROUGH_ADDITIONS += "EMBI_QTBASE_OPTIMIZE_SIZE EMBI_QTBASE_STATIC EMBI_QTBASE_LTCG"
+export BB_ENV_PASSTHROUGH_ADDITIONS="${BB_ENV_PASSTHROUGH_ADDITIONS} EMBI_QTBASE_OPTIMIZE_SIZE EMBI_QTBASE_STATIC EMBI_QTBASE_LTCG"
 
-python () {
-    import os
-    if not os.environ.get("EMBI_QTBASE_OPTIMIZE_SIZE", ""):
-        d.setVar("EMBI_QTBASE_OPTIMIZE_SIZE", "0")
-    if not os.environ.get("EMBI_QTBASE_STATIC", ""):
-        d.setVar("EMBI_QTBASE_STATIC", "0")
-    if not os.environ.get("EMBI_QTBASE_LTCG", ""):
-        d.setVar("EMBI_QTBASE_LTCG", "0")
-}
-
-#EMBI_QTBASE_OPTIMIZE_SIZE ?= "0"
-#EMBI_QTBASE_STATIC ?= "0"
-#EMBI_QTBASE_LTCG ?= "0"
+EMBI_QTBASE_OPTIMIZE_SIZE ?= "0"
+EMBI_QTBASE_STATIC ?= "0"
+EMBI_QTBASE_LTCG ?= "0"
 
 # append locales
 IMAGE_LINGUAS:append = " \
