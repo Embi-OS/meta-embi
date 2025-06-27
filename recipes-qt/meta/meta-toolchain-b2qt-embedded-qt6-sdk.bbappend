@@ -5,7 +5,7 @@
 ############################################################################
 
 DESCRIPTION = "SDK toolchain for the Embi OS image"
-DESCRIPTION:append = "${@' (Static Qt)' if bb.utils.to_boolean(d.getVar('EMBI_QTBASE_STATIC')) else ''}"
+#DESCRIPTION:append = "${@' (Static Qt)' if bb.utils.to_boolean(d.getVar('EMBI_QTBASE_STATIC')) else ''}"
 
 TOOLCHAIN_TARGET_TASK += " \
     packagegroup-rpi \
