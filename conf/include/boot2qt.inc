@@ -20,8 +20,8 @@ DISTRO_FEATURES:remove = "webengine ld-is-gold"
 DISTRO_FEATURES:remove = "wayland vulkan"
 
 # remove debug-tweaks for production build
-#IMAGE_FEATURES:remove = "debug-tweaks"
-#EXTRA_IMAGE_FEATURES:remove = "debug-tweaks"
+IMAGE_FEATURES:remove = "debug-tweaks"
+EXTRA_IMAGE_FEATURES:remove = "debug-tweaks"
 
 # Qt build configuration
 EMBI_QTBASE_OPTIMIZE_SIZE ?= "0"
