@@ -16,7 +16,7 @@ SRC_URI += " \
 
 SRCREV = "${AUTOREV}"
 
-DEPENDS += "qtbase qtdeclarative qtdeclarative-native qtvirtualkeyboard qtvirtualkeyboard-native qtcharts qtsvg qtsvg-native"
+DEPENDS += "qtbase qtdeclarative qtdeclarative-native qtvirtualkeyboard qtcharts qtsvg qtsvg-native"
 
 S = "${WORKDIR}/git"
 
