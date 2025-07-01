@@ -20,9 +20,17 @@ DEPENDS += "qtbase qtdeclarative qtdeclarative-native qtvirtualkeyboard qtcharts
 
 S = "${WORKDIR}/git"
 
+# Build type: Debug, Release, MinSizeRel, RelWithDebInfo
+BUILD_TYPE ?= "Release"
+
+EXTRA_OECMAKE += "\
+    -DCMAKE_BUILD_TYPE=${BUILD_TYPE} \
+"
+
 do_install:append() {
     install -m 0755 -d ${D}${systemd_unitdir}/system
     install -m 0644 ${WORKDIR}/embi-launcher.service ${D}${systemd_unitdir}/system/
 }
 
 SYSTEMD_SERVICE:${PN} = "embi-launcher.service"
+FILES_${PN} += "/Embi/00_Launcher/A00_Launcher"
