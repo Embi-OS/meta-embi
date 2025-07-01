@@ -11,7 +11,7 @@ inherit qt6-cmake systemd
 
 SRC_URI += " \
     git://github.com/Embi-OS/embi-launcher.git;protocol=https;branch=main \
-    file://demolauncher.service \
+    file://embi-launcher.service \
     "
 
 SRCREV = "${AUTOREV}"
