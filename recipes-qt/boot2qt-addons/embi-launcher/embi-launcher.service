@@ -1,0 +1,12 @@
+[Unit]
+Description=Embi OS Launcher
+After=systemd-user-sessions.service
+ConditionPathExists=!/usr/bin/b2qt
+Conflicts=startupscreen.service
+
+[Service]
+User=root
+ExecStart=-/usr/bin/appcontroller /Ecosysteme/00_Launcher/A00_Launcher
+
+[Install]
+WantedBy=multi-user.target

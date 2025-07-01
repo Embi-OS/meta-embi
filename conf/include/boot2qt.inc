@@ -28,6 +28,9 @@ EMBI_QTBASE_OPTIMIZE_SIZE ?= "0"
 EMBI_QTBASE_STATIC ?= "0"
 EMBI_QTBASE_LTCG ?= "0"
 
+# remove boot2qt-demolauncher
+USE_EMBI_LAUNCHER ?= "1"
+
 # append locales
 IMAGE_LINGUAS:append = " \
     fr-fr \
