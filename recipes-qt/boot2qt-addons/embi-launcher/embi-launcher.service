@@ -6,7 +6,7 @@ Conflicts=startupscreen.service
 
 [Service]
 User=root
-ExecStart=-/usr/bin/appcontroller /Ecosysteme/00_Launcher/A00_Launcher
+ExecStart=-/usr/bin/appcontroller /Embi/00_Launcher/A00_Launcher
 
 [Install]
 WantedBy=multi-user.target
