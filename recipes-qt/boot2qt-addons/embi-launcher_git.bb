@@ -32,5 +32,8 @@ do_install:append() {
     install -m 0644 ${WORKDIR}/embi-launcher.service ${D}${systemd_unitdir}/system/
 }
 
+FILES:${PN} += " \
+    /Embi/* \
+    "
+    
 SYSTEMD_SERVICE:${PN} = "embi-launcher.service"
-FILES_${PN} += "/Embi/00_Launcher/A00_Launcher"
