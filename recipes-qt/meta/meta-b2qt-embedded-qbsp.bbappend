@@ -8,7 +8,7 @@
 
 # 1) The fixed bits
 BOOT2QT_BASE       = "Boot2Qt ${PV}"
-EMBI_OS_BASE       = "Embi OS ${PV}"
+EMBI_OS_BASE       = "Embi-OS"
 EMBI_QBSP_BASE     = "meta-embios-embedded-qbsp-${SDKMACHINE}-${MACHINE}-${PV}"
 
 # 2) Reusable suffixes/prefixes based on static or not
