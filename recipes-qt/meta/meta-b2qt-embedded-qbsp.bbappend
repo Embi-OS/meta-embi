@@ -10,14 +10,11 @@
 EMBI_OS_BASE       = "Embi OS ${PV}"
 EMBI_QBSP_BASE     = "meta-embios-embedded-qbsp-${SDKMACHINE}-${MACHINE}-${PV}"
 
-# 2) Turn EMBI_QTBASE_STATIC into a boolean once
-EMBI_IS_STATIC     = "${@ bb.utils.to_boolean(d.getVar('EMBI_QTBASE_STATIC')) }"
-
-# 3) Reusable suffixes/prefixes based on static or not
-EMBI_NAME_SUFFIX        = "${@ ' (Static Qt)'       if EMBI_IS_STATIC else '' }"
-EMBI_DEPLOY_PREPEND     = "${@ ' (Static Qt)'       if EMBI_IS_STATIC else '' }"
-EMBI_INSTCOMP_PREFIX    = "${@ 'static.'            if EMBI_IS_STATIC else '' }"
-EMBI_PATH_SUFFIX        = "${@ '_static'            if EMBI_IS_STATIC else '' }"
+# 2) Reusable suffixes/prefixes based on static or not
+EMBI_NAME_SUFFIX        = "${@ ' (Static Qt)'       if bb.utils.to_boolean(d.getVar('EMBI_QTBASE_STATIC')) else '' }"
+EMBI_DEPLOY_PREPEND     = "${@ ' (Static Qt)'       if bb.utils.to_boolean(d.getVar('EMBI_QTBASE_STATIC')) else '' }"
+EMBI_INSTCOMP_PREFIX    = "${@ 'static.'            if bb.utils.to_boolean(d.getVar('EMBI_QTBASE_STATIC')) else '' }"
+EMBI_PATH_SUFFIX        = "${@ '_static'            if bb.utils.to_boolean(d.getVar('EMBI_QTBASE_STATIC')) else '' }"
 
 #─── actual settings ─────────────────────────────────────────────────
 
