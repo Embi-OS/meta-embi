@@ -15,7 +15,7 @@ export MACHINE=raspberrypi-armv8 && source ./setup-environment.sh
 bitbake meta-b2qt-embedded-qbsp --runall=fetch
 bitbake meta-b2qt-embedded-qbsp
 
-# To build with a static build og Qt
+# To build with a static build of Qt
 export BB_ENV_PASSTHROUGH_ADDITIONS="$BB_ENV_PASSTHROUGH_ADDITIONS EMBI_QTBASE_STATIC"
 EMBI_QTBASE_STATIC="1" bitbake meta-b2qt-embedded-qbsp
 
