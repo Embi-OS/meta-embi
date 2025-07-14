@@ -19,6 +19,9 @@ DISTRO_FEATURES:remove = "webengine ld-is-gold"
 # remove wayland for lighter image
 DISTRO_FEATURES:remove = "wayland vulkan"
 
+# remove virtualization
+DISTRO_FEATURES:remove = "virtualization"
+
 # remove debug-tweaks for production build
 IMAGE_FEATURES:remove = "debug-tweaks"
 EXTRA_IMAGE_FEATURES:remove = "debug-tweaks"
