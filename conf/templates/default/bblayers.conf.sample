@@ -22,7 +22,6 @@ BBLAYERS ?= " \
   ${BSPDIR}/sources/meta-openembedded/meta-initramfs \
   ${BSPDIR}/sources/meta-openembedded/meta-multimedia \
   ${BSPDIR}/sources/meta-openembedded/meta-filesystems \
-  ${BSPDIR}/sources/meta-virtualization \
   ${BSPDIR}/sources/meta-clang \
   ${BSPDIR}/sources/meta-boot2qt/meta-boot2qt \
   ${BSPDIR}/sources/meta-boot2qt/meta-boot2qt-distro \
