@@ -35,14 +35,14 @@ EMBI_QTBASE_LTCG ?= "0"
 USE_EMBI_LAUNCHER ?= "1"
 
 # append locales
-#IMAGE_LINGUAS:append = " \
-#    fr-fr \
-#    fr-ch \
-#    it-ch \
-#    it-it \
-#    de-de \
-#    de-ch \
-#    en-us \
-#    en-gb \
-#"
+IMAGE_LINGUAS:append = " \
+    fr-fr \
+    fr-ch \
+    it-ch \
+    it-it \
+    de-de \
+    de-ch \
+    en-us \
+    en-gb \
+"
 
