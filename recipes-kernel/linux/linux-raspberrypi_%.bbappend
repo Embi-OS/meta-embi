@@ -8,4 +8,5 @@ FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
 
 SRC_URI += "\
     file://smb.cfg \
+    file://tty.cfg \
     "
