@@ -4,6 +4,8 @@
 ##
 ############################################################################
 
+PREFERRED_VERSION_linux-raspberrypi = "6.12.%"
+
 # add wm8960 support
 MACHINE_FEATURES:append = " wm8960"
 
