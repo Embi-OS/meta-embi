@@ -9,8 +9,8 @@ DISABLE_SPLASH = "1"
 #DISABLE_RPI_BOOT_LOGO = "1"
 
 # add usb boot support
-CMDLINE_ROOT_PARTITION = "/dev/sda2"
-BOOT_MEDIA = "usb"
+#CMDLINE_ROOT_PARTITION = "/dev/sda2"
+#BOOT_MEDIA = "usb"
 
 # add pci boot support
 #CMDLINE_ROOT_PARTITION = "/dev/nvme0n1p2"
