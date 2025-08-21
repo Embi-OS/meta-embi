@@ -13,8 +13,8 @@ DISABLE_SPLASH = "1"
 #BOOT_MEDIA = "usb"
 
 # add pci boot support
-#CMDLINE_ROOT_PARTITION = "/dev/nvme0n1p2"
-#BOOT_MEDIA = "pci"
+CMDLINE_ROOT_PARTITION = "/dev/nvme0n1p2"
+BOOT_MEDIA = "pci"
 
 # add wm8960 support
 #MACHINE_FEATURES:append = " wm8960"
