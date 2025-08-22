@@ -4,13 +4,9 @@
 ##
 ############################################################################
 
-# add usb boot support
-#CMDLINE_ROOT_PARTITION = "/dev/sda2"
-#BOOT_MEDIA = "usb"
-
-# add pci boot support
-#CMDLINE_ROOT_PARTITION = "/dev/nvme0n1p2"
-#BOOT_MEDIA = "pci"
+DISABLE_OVERSCAN = "1"
+DISABLE_SPLASH = "1"
+DISABLE_RPI_BOOT_LOGO = "1"
 
 # rpi config
 ENABLE_DWC2_PERIPHERAL = "0"
