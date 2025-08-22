@@ -21,6 +21,7 @@ RDEPENDS:packagegroup-rpi = "\
 
 SUMMARY:packagegroup-base-rpi-cli = "Recommended for any image"
 RRECOMMENDS:packagegroup-base-rpi-cli = "\
+    raspi-utils \
     can-utils \
     can-utils-cantest \
     dosfstools \
