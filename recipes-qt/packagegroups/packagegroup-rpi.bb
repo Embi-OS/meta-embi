@@ -21,7 +21,6 @@ RDEPENDS:packagegroup-rpi = "\
 
 SUMMARY:packagegroup-base-rpi-cli = "Recommended for any image"
 RRECOMMENDS:packagegroup-base-rpi-cli = "\
-    raspi-utils \
     can-utils \
     can-utils-cantest \
     dosfstools \
@@ -31,6 +30,9 @@ RRECOMMENDS:packagegroup-base-rpi-cli = "\
     libgpiod \
     libgpiod-dev \
     libgpiod-tools \
+    mtd-utils \
+    u-boot-fw-utils \
+    raspi-utils \
     uhubctl \
     util-linux-fstrim \
     util-linux \

@@ -18,3 +18,6 @@ include conf/include/rpi.inc
 # include user config
 include conf/include/user.inc
 
+# include swupdate config
+include conf/include/swupdate.inc
+
