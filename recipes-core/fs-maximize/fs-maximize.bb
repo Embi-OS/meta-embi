@@ -17,11 +17,9 @@ SRC_URI = " \
 "
 
 do_install () {
-    if [ "${MAXIMIZED_PARTITION}" != "" ]; then
-        install -d ${D}/${sbindir}
-        install -m 0755 ${WORKDIR}/fs-maximize.sh ${D}/${sbindir}
-        sed -i 's#@ROOTFS_DISK@#${RPI_DISK_PARTITION}#' ${D}${sbindir}/fs-maximize.sh
-        sed -i 's#@ROOTFS_PART@#${MAXIMIZED_PARTITION}#' ${D}${sbindir}/fs-maximize.sh
-    fi
+    install -d ${D}/${sbindir}
+    install -m 0755 ${WORKDIR}/fs-maximize.sh ${D}/${sbindir}
+    sed -i 's#@ROOTFS_DISK@#${RPI_DISK_PARTITION}#' ${D}${sbindir}/fs-maximize.sh
+    sed -i 's#@ROOTFS_PART@#${RPI_ROOT_PARTITION}#' ${D}${sbindir}/fs-maximize.sh
 }
 

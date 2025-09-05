@@ -7,5 +7,4 @@ tmpfs                /run                 tmpfs      mode=0755,nodev,nosuid,stri
 tmpfs                /var/volatile        tmpfs      defaults              0  0
 
 @BOOTFS_PART@        /boot                auto       defaults,sync         0  0
-#@PERSIST_PART@      /persistant          auto       defaults,sync         0  0
 
