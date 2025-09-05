@@ -5,7 +5,7 @@
 ############################################################################
 
 # Select boot medium: "mmc", "usb", "pci"
-RPI_BOOT_MEDIA ?= "mmc"
+RPI_BOOT_MEDIA ?= "usb"
 
 RPI_BOOTFS_NUM ?= "1"
 RPI_ROOTFS1_NUM ?= "2"
@@ -19,8 +19,9 @@ RPI_BLOCK_PARTITION:pci = "/dev/nvme0n1p"
 RPI_BLOCK_PARTITION = "${@d.getVar('RPI_BLOCK_PARTITION:' + d.getVar('RPI_BOOT_MEDIA'))}"
 
 # For meta-raspberrypi, keep a BOOT_MEDIA var that mirrors RPI_BOOT_MEDIA
-CMDLINE_ROOT_PARTITION = "${RPI_BLOCK_PARTITION}${RPI_ROOTFS_NUM}"
+CMDLINE_ROOT_PARTITION = "${RPI_BLOCK_PARTITION}${RPI_ROOTFS1_NUM}"
 BOOT_MEDIA = "${RPI_BOOT_MEDIA}"
+WIC_CREATE_EXTRA_ARGS ?= "--no-fstab-update"
 
 # enable u-boot support
 RPI_USE_U_BOOT = "1"

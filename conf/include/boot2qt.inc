@@ -4,6 +4,9 @@
 ##
 ############################################################################
 
+# set machine hostname
+MACHINE_HOSTNAME = "embi-${MACHINE}"
+
 # default to commercial Qt "opensource"
 QT_EDITION = "commercial"
 
