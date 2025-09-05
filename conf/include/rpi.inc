@@ -7,19 +7,25 @@
 # Select boot medium: "mmc", "usb", "pci"
 RPI_BOOT_MEDIA ?= "usb"
 
+# For mmc and pci, one must use "p1", "p2" etc...
 RPI_BOOTFS_NUM ?= "1"
 RPI_ROOTFS1_NUM ?= "2"
 RPI_ROOTFS2_NUM ?= "3"
 RPI_PERSIST_NUM ?= "4"
 
 # Root partition mapping depending on boot media
-RPI_BLOCK_PARTITION:mmc = "/dev/mmcblk0p"
-RPI_BLOCK_PARTITION:usb = "/dev/sda"
-RPI_BLOCK_PARTITION:pci = "/dev/nvme0n1p"
-RPI_BLOCK_PARTITION = "${@d.getVar('RPI_BLOCK_PARTITION:' + d.getVar('RPI_BOOT_MEDIA'))}"
+RPI_DISK_PARTITION:mmc = "/dev/mmcblk0"
+RPI_DISK_PARTITION:usb = "/dev/sda"
+RPI_DISK_PARTITION:pci = "/dev/nvme0n1"
+RPI_DISK_PARTITION = "${@d.getVar('RPI_DISK_PARTITION:' + d.getVar('RPI_BOOT_MEDIA'))}"
+RPI_BOOT_PARTITION = "${RPI_DISK_PARTITION}${RPI_BOOTFS_NUM}"
+RPI_ROOT_PARTITION = "${RPI_DISK_PARTITION}${RPI_ROOTFS1_NUM}"
+RPI_PERSIST_PARTITION = "${RPI_DISK_PARTITION}${RPI_PERSIST_NUM}"
+
+MAXIMIZED_PARTITION = "${RPI_ROOT_PARTITION}"
 
 # For meta-raspberrypi, keep a BOOT_MEDIA var that mirrors RPI_BOOT_MEDIA
-CMDLINE_ROOT_PARTITION = "${RPI_BLOCK_PARTITION}${RPI_ROOTFS1_NUM}"
+CMDLINE_ROOT_PARTITION = "${RPI_ROOT_PARTITION}"
 BOOT_MEDIA = "${RPI_BOOT_MEDIA}"
 WIC_CREATE_EXTRA_ARGS ?= "--no-fstab-update"
 

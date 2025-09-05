@@ -20,9 +20,11 @@ do_deploy:append() {
 
     # ALSA audio support
     sed -i '/dtparam=audio=/ c\dtparam=audio=${ALSA_AUDIO}' $CONFIG
-
+    
     # Enable/Disable hdmi outputs
-    sed -i '/max_framebuffers=/ c\max_framebuffers=${MAX_FRAMEBUFFERS}' $CONFIG
+    echo >> $CONFIG
+    echo "# enable both hdmi outputs" >> $CONFIG
+    echo "max_framebuffers=${MAX_FRAMEBUFFERS}" >> $CONFIG
     
     # Touch Display
     if [ "${ENABLE_TOUCH_DISPLAY}" = "1" ]; then

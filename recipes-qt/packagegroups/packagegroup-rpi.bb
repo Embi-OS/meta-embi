@@ -38,6 +38,7 @@ RRECOMMENDS:packagegroup-base-rpi-cli = "\
     util-linux \
     nano \
     curl \
+    fs-maximize \
 "
 
 

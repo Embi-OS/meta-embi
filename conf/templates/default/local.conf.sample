@@ -59,7 +59,7 @@ PARALLEL_MAKE ?= "-j ${@oe.utils.cpu_count()}"
 #
 # This sets the default machine to be qemux86-64 if no other machine is selected:
 MACHINE ??= "qemux86-64"
-MACHINE_HOSTNAME ?= "b2qt-${MACHINE}"
+MACHINE_HOSTNAME ?= "embi-${MACHINE}"
 
 #
 # Where to place downloads
