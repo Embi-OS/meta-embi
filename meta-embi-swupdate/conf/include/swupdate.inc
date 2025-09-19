@@ -4,9 +4,6 @@
 ##
 ############################################################################
 
-# add swupdate support
-EMBI_USE_SWUPDATE ?= "1"
-
 # sd-card partition
 WKS_FILE = "embi-swupdate-sdimage-rpi.wks"
 
@@ -16,11 +13,8 @@ EMBI_ROOTFS_PART_B = "/dev/mmcblk0p3"
 EMBI_CONFIG_PART = "/dev/mmcblk0p4"
 
 IMAGE_FSTYPES:append = " \
-    ${@'tar.zst' if bb.utils.to_boolean(d.getVar('EMBI_USE_SWUPDATE')) else ''} \
+    tar.zst \
 "
-
-# Only apply SWUpdate append recipes if EMBI_USE_SWUPDATE is set
-BBMASK += "${@'' if bb.utils.to_boolean(d.getVar('EMBI_USE_SWUPDATE')) else '/meta-embi-swupdate/'}"
 
 DISTRO_FEATURES:append = " overlayfs"
 IMAGE_FEATURES:remove = "package-management"
