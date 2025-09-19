@@ -1,0 +1,13 @@
+[Unit]
+Description=Ensure all fstab mountpoints exist
+DefaultDependencies=no
+Before=local-fs.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/make-fstab-mountpoints.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=local-fs.target
+

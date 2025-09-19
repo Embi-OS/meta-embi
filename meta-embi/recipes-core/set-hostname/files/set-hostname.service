@@ -1,0 +1,13 @@
+[Unit]
+ConditionFileNotEmpty=|!/etc/hostname
+Wants=network-pre.target
+Before=network-pre.target
+After=local-fs.target
+After=sys-subsystem-net-devices-eth0.device
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/sethostname
+
+[Install]
+WantedBy=network.target

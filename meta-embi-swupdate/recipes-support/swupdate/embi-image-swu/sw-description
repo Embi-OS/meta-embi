@@ -1,0 +1,27 @@
+software =
+{
+    @@MACHINE@@ = {
+        version = "@@DISTRO_VERSION@@";
+        description = "Embi-OS update image";
+        hardware-compatibility: ["1.0"];
+        reboot = false;
+        files: (
+            {
+                filename = "@@EMBI_SWUPDATE_TARGET_IMAGE_FILE@@";
+                type = "archive";
+                compressed = "zstd";
+                device = "/dev/update";
+                filesystem = "ext4";
+                preserve-attributes = true;
+                path = "/";
+            }
+        );
+
+        scripts: (
+            {
+                filename = "update.sh";
+                type = "shellscript";
+            }
+        );
+    };
+}

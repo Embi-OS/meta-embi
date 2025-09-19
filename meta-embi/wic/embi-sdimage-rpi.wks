@@ -1,0 +1,35 @@
+# short-description: Create Raspberry Pi SD card image
+# long-description: Creates a partitioned SD card image for use with
+# Raspberry Pi. Boot files are located in the first vfat partition.
+# The rootfs partition automatically expands to fill the remaining space.
+
+# ------------------------
+# Boot partition (FAT32)
+# ------------------------
+# - Contains firmware, kernel, and bootloader files
+# - Must be vfat so that the Pi bootloader can read it
+# - Marked as active (bootable)
+# - Fixed size: 100 MB (more than enough for kernel + DTBs)
+part /boot \
+    --source bootimg-partition \   # Populated with kernel + DTBs
+    --ondisk mmcblk0 \             # Target device is the SD card
+    --fstype=vfat \                # FAT required by RPi bootloader
+    --label boot \                 # Partition label "boot"
+    --active \                     # Mark partition bootable
+    --align 4096 \                 # Align to 4096 sectors (~2MiB)
+    --size 100                     # 100 MB minimum size
+
+# ------------------------
+# Root filesystem (ext4)
+# ------------------------
+# - Contains the full Linux rootfs
+# - Minimum size 1024 MB (1 GB)
+# - Will expand to fill entire SD card (via --resize)
+part / \
+    --source rootfs \              # Populated with IMAGE_ROOTFS
+    --ondisk mmcblk0 \             # Same device (mmcblk0)
+    --fstype=ext4 \                # Use ext4 for root filesystem
+    --label root \                 # Partition label "root"
+    --align 4096 \                 # Align to 4096 sectors
+    --size 1024 \                  # Ensure rootfs partition >= 1 GB
+    --resize                       # Expand to fill remaining space

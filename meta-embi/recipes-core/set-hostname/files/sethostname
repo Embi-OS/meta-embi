@@ -1,0 +1,20 @@
+#!/bin/sh
+
+if [ ! -f /proc/device-tree/serial-number ]; then
+    serial="recovery-mode"
+else
+    serial=$(tr -d '\0' </proc/device-tree/serial-number)
+
+    #if serial number is empty we append no-serial-number string
+    if [ -z "${serial}" ] && [ "${serial}" != " "  ]; then
+        serial="no-serial-number"
+    fi
+fi
+
+hostname=@@MACHINE@@-"${serial}"
+
+if [ -f /usr/bin/hostnamectl ]; then
+    /usr/bin/hostnamectl set-hostname @@HOSTNAMECTL_OPT@@ "${hostname}"
+else
+    hostname "${hostname}"
+fi

@@ -1,0 +1,13 @@
+[Unit]
+Description=Mount Boot Partition
+DefaultDependencies=no
+Before=local-fs.target
+
+[Mount]
+What=LABEL=boot
+Where=/boot
+Type=vfat
+Options=defaults
+
+[Install]
+WantedBy=local-fs.target

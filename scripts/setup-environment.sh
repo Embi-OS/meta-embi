@@ -46,7 +46,7 @@ if [ ! -e ${PWD}/${BUILDDIRECTORY} ]; then
   mkdir -p ${PWD}/${BUILDDIRECTORY}/conf
   cp ${LAYERSCONF} ${PWD}/${BUILDDIRECTORY}/conf/bblayers.conf
   if [ ! -e "${PWD}/sources/templates/local.conf.sample" ]; then
-    cp ${PWD}/sources/meta-embi/conf/templates/default/local.conf.sample  ${PWD}/${BUILDDIRECTORY}/conf/local.conf
+    cp ${PWD}/sources/meta-embi/meta-embi/conf/templates/default/local.conf.sample  ${PWD}/${BUILDDIRECTORY}/conf/local.conf
   fi
 fi
 
