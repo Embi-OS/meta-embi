@@ -7,10 +7,10 @@
 # sd-card partition
 WKS_FILE = "embi-swupdate-sdimage-rpi.wks"
 
-EMBI_BOOTFS_PART_A = "/dev/mmcblk0p1"
-EMBI_ROOTFS_PART_A = "/dev/mmcblk0p2"
-EMBI_ROOTFS_PART_B = "/dev/mmcblk0p3"
-EMBI_CONFIG_PART = "/dev/mmcblk0p4"
+EMBI_BOOT_PART = "/dev/sda1"
+EMBI_ROOTFS_PART_A = "/dev/sda2"
+EMBI_ROOTFS_PART_B = "/dev/sda3"
+EMBI_CONFIG_PART = "/dev/sda4"
 
 IMAGE_FSTYPES:append = " \
     tar.zst \

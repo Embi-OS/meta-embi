@@ -41,8 +41,9 @@ RRECOMMENDS:packagegroup-rpi-cli = "\
     curl \
 "
 
-SUMMARY:packagegroup-tdx-utils = "Recommended for any image"
-RRECOMMENDS:packagegroup-tdx-utils = "\
+SUMMARY:packagegroup-rpi-utils = "Recommended for any image"
+RRECOMMENDS:packagegroup-rpi-utils = "\
+    u-boot \
     raspi-utils \
     set-hostname \
     boot-mount \
