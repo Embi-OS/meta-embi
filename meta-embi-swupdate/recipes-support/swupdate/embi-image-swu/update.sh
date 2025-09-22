@@ -13,10 +13,10 @@ function get_current_root_device
 function get_update_part
 {
     CURRENT_PART="${CURRENT_ROOT: -1}"
-    if [ $CURRENT_PART = "1" ]; then
-        UPDATE_PART="2";
+    if [ $CURRENT_PART = "2" ]; then
+        UPDATE_PART="3";
     else
-        UPDATE_PART="1";
+        UPDATE_PART="2";
     fi
 }
 

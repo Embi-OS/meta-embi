@@ -1,15 +1,20 @@
 # SPDX-License-Identifier: MIT
 # Complete Raspberry Pi boot script with diagnostics
 
+env set devtype @@BOOT_MEDIA@@
+env set kernel_imagetype @@KERNEL_IMAGETYPE@@
+
 echo ""
 echo "=== U-Boot Boot Info ==="
 echo "upgrade_available = ${upgrade_available}"
 echo "bootcount         = ${bootcount}"
 echo "bootlimit         = ${bootlimit}"
-echo "root_part         = ${root_part}"
 echo "boot_part         = ${boot_part}"
 echo "boot_devnum       = ${boot_devnum}"
 echo "boot_devtype      = ${boot_devtype}"
+echo "root_part         = ${root_part}"
+echo "root_devnum       = ${root_devnum}"
+echo "root_devtype      = ${root_devtype}"
 echo "distro_bootpart   = ${distro_bootpart}"
 echo "devtype           = ${devtype}"
 echo "kernel_image      = ${kernel_image}"
@@ -23,20 +28,14 @@ echo "rollback          = ${rollback}"
 echo "========================"
 echo ""
 
-# Switch back
-if test "${rollback}" = "1"; then
-    if test "${devnum}" = "1"; then
-        env set devnum 2
-    else
-        env set devnum 1
-    fi
-fi
-
 # 1. Set useful defaults
 test -n ${boot_part} || env set boot_part 1
+test -n ${root_part} || env set root_part 2
 test -n ${boot_devnum} || env set boot_devnum 0
-test -n ${boot_devtype} || env set boot_devtype @@BOOT_MEDIA@@
-test -n ${kernel_image} || env set kernel_image @@KERNEL_IMAGETYPE@@
+test -n ${boot_devtype} || env set boot_devtype ${devtype}
+test -n ${kernel_image} || env set kernel_image ${kernel_imagetype}
+test -n ${root_devtype} || env set root_devtype ${boot_devtype}
+test -n ${root_devnum}  || env set root_devnum  ${boot_devnum}
 
 # 2. Initialize USB if needed
 if test ${boot_devtype} = "usb"; then
@@ -44,7 +43,12 @@ if test ${boot_devtype} = "usb"; then
     usb start
 fi
 
-# 3. Construct a load command for convenience
+# 3. Set rootfsargs using PARTUUID
+env set uuid_set 'part uuid ${root_devtype} ${root_devnum}:${root_part} uuid'
+env set rootfsargs_set 'run uuid_set && env set rootfsargs "root=PARTUUID=${uuid} ro rootwait"'
+run rootfsargs_set
+
+# 4. Construct a load command for convenience
 if test ${boot_devtype} = "mmc" -o ${boot_devtype} = "usb"; then
     env set load_cmd "fatload ${boot_devtype} ${boot_devnum}:${boot_part}"
 else
@@ -52,11 +56,12 @@ else
     exit
 fi
 
-# 4. Build and print bootargs
+# 5. Build and print bootargs
 fdt addr ${fdt_addr} && fdt get value bootargs /chosen bootargs
-echo "Bootargs: ${bootargs}"
+env set bootargs "${bootargs} ${rootfsargs}"
+echo "Final bootargs:    ${bootargs}"
 
-# 5. Load kernel
+# 6. Load kernel
 echo "Loading kernel image ${kernel_image}..."
 if ${load_cmd} ${kernel_addr_r} ${kernel_image}; then
     echo "Kernel loaded to ${kernel_addr_r}"
@@ -65,7 +70,7 @@ else
     exit
 fi
 
-# 6. Handle environment file
+# 7. Handle environment file
 if test -e ${boot_devtype} ${boot_devnum}:${boot_part} uboot.env; then
     echo "uboot.env exists"
 else
@@ -78,7 +83,7 @@ else
     fi
 fi
 
-# 7. Boot the kernel
+# 8. Boot the kernel
 echo ""
 echo "========================"
 echo "Booting kernel..."

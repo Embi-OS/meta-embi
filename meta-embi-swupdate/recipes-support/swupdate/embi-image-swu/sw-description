@@ -2,12 +2,11 @@ software =
 {
     @@MACHINE@@ = {
         version = "@@DISTRO_VERSION@@";
-        description = "Embi-OS update image";
+        description = "VOH OS update image";
         hardware-compatibility: ["1.0"];
-        reboot = false;
         files: (
             {
-                filename = "@@EMBI_SWUPDATE_TARGET_IMAGE_FILE@@";
+                filename = "@@VOH_SWUPDATE_TARGET_IMAGE_FILE@@";
                 type = "archive";
                 compressed = "zstd";
                 device = "/dev/update";
