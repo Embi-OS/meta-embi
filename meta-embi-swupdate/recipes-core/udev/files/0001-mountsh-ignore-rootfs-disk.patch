@@ -1,0 +1,38 @@
+Subject: [PATCH] mount.sh: ignore partitions on same disk as rootfs
+Upstream-Status: Inappropriate [embedded-specific automount policy]
+
+Skip automount of partitions that reside on the same physical block
+device as the current root filesystem. This prevents spurious mounts
+of boot/config/rootfs media while still auto‑mounting external media.
+---
+
+diff --git a/mount.sh b/mount.sh
+--- a/mount.sh
++++ b/mount.sh
+@@ -36,6 +36,26 @@
+ 	fi
+ done
+ 
++# --- new helper to compare disks ---
++same_disk_as_rootfs() {
++    ROOT_DEV=$(findmnt -n -o SOURCE /)
++    if [ -b "$ROOT_DEV" ]; then
++        ROOT_DISK=$(lsblk -no PKNAME "$ROOT_DEV")
++        ROOT_DISK="/dev/$ROOT_DISK"
++        CUR_DISK=$(lsblk -no PKNAME "$DEVNAME")
++        CUR_DISK="/dev/$CUR_DISK"
++        [ "$CUR_DISK" = "$ROOT_DISK" ]
++        return
++    fi
++    return 1
++}
++
++# Skip devices on same disk as rootfs
++if same_disk_as_rootfs; then
++    logger "udev/mount.sh" "[$DEVNAME] is on the same disk as rootfs, ignoring automount"
++    exit 0
++fi
++
+ is_filesystem_supported() {
+     while read -r fs; do
+        if [ "${fs#nodev}" = "$1" ];

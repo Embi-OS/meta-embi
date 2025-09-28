@@ -1,8 +1,31 @@
 # SPDX-License-Identifier: MIT
 # Complete Raspberry Pi boot script with diagnostics
 
-env set devtype @@BOOT_MEDIA@@
-env set kernel_imagetype @@KERNEL_IMAGETYPE@@
+# 1. Initialize USB if needed
+if test @@BOOT_MEDIA@@ = "usb"; then
+    echo "Starting USB subsystem..."
+    usb start
+fi
+
+# 2. Handle environment file
+if test -e @@BOOT_MEDIA@@ 0:1 uboot.env; then
+    echo "Found uboot.env on @@BOOT_MEDIA@@"
+    load @@BOOT_MEDIA@@ 0:1 ${loadaddr} uboot.env
+    env import -t ${loadaddr} ${filesize}
+else
+    echo "uboot.env missing, saving default environment..."
+    saveenv
+fi
+
+# 3. Set useful defaults
+test -n ${distro_rootpart} || env set distro_rootpart 2
+test -n ${boot_part} || env set boot_part ${distro_bootpart}
+test -n ${root_part} || env set root_part ${distro_rootpart}
+test -n ${boot_devnum} || env set boot_devnum 0
+test -n ${boot_devtype} || env set boot_devtype @@BOOT_MEDIA@@
+test -n ${kernel_image} || env set kernel_image @@KERNEL_IMAGETYPE@@
+test -n ${root_devtype} || env set root_devtype ${boot_devtype}
+test -n ${root_devnum}  || env set root_devnum  ${boot_devnum}
 
 echo ""
 echo "=== U-Boot Boot Info ==="
@@ -16,71 +39,40 @@ echo "root_part         = ${root_part}"
 echo "root_devnum       = ${root_devnum}"
 echo "root_devtype      = ${root_devtype}"
 echo "distro_bootpart   = ${distro_bootpart}"
+echo "distro_rootpart   = ${distro_rootpart}"
 echo "devtype           = ${devtype}"
 echo "kernel_image      = ${kernel_image}"
 echo "overlays_file     = ${overlays_file}"
 echo "overlays_prefix   = ${overlays_prefix}"
-echo "fitconf_fdt_overlays = ${fitconf_fdt_overlays}"
 echo "fdtfile           = ${fdtfile}"
 echo "fdt_file          = ${fdt_file}"
+echo "fdt_addr          = ${fdt_addr}"
 echo "altbootcmd        = ${altbootcmd}"
-echo "rollback          = ${rollback}"
+echo "ustate            = ${ustate}"
 echo "========================"
 echo ""
 
-# 1. Set useful defaults
-test -n ${boot_part} || env set boot_part 1
-test -n ${root_part} || env set root_part 2
-test -n ${boot_devnum} || env set boot_devnum 0
-test -n ${boot_devtype} || env set boot_devtype ${devtype}
-test -n ${kernel_image} || env set kernel_image ${kernel_imagetype}
-test -n ${root_devtype} || env set root_devtype ${boot_devtype}
-test -n ${root_devnum}  || env set root_devnum  ${boot_devnum}
-
-# 2. Initialize USB if needed
-if test ${boot_devtype} = "usb"; then
-    echo "Starting USB subsystem..."
-    usb start
-fi
-
-# 3. Set rootfsargs using PARTUUID
+# 4. Set rootfsargs using PARTUUID
 env set uuid_set 'part uuid ${root_devtype} ${root_devnum}:${root_part} uuid'
 env set rootfsargs_set 'run uuid_set && env set rootfsargs "root=PARTUUID=${uuid} ro rootwait"'
 run rootfsargs_set
+echo "Set rootfsargs: ${rootfsargs}"
 
-# 4. Construct a load command for convenience
-if test ${boot_devtype} = "mmc" -o ${boot_devtype} = "usb"; then
-    env set load_cmd "fatload ${boot_devtype} ${boot_devnum}:${boot_part}"
-else
-    echo "This script is not meant to boot from ${boot_devtype}."
-    exit
-fi
+# 5. Construct load command for rootfs (/boot directory)
+env set load_cmd "fatload ${boot_devtype} ${boot_devnum}:${boot_part}"
 
-# 5. Build and print bootargs
+# 6. Build and print bootargs
 fdt addr ${fdt_addr} && fdt get value bootargs /chosen bootargs
 env set bootargs "${bootargs} ${rootfsargs}"
-echo "Final bootargs:    ${bootargs}"
+echo "Final bootargs: ${bootargs}"
 
-# 6. Load kernel
+# 7. Load kernel
 echo "Loading kernel image ${kernel_image}..."
 if ${load_cmd} ${kernel_addr_r} ${kernel_image}; then
     echo "Kernel loaded to ${kernel_addr_r}"
 else
     echo "ERROR: Kernel load failed!"
     exit
-fi
-
-# 7. Handle environment file
-if test -e ${boot_devtype} ${boot_devnum}:${boot_part} uboot.env; then
-    echo "uboot.env exists"
-else
-    echo "uboot.env missing, trying saveenv..."
-    saveenv
-    if test -e ${boot_devtype} ${boot_devnum}:${boot_part} uboot.env; then
-        echo "uboot.env successfully created"
-    else
-        echo "uboot.env creation FAILED"
-    fi
 fi
 
 # 8. Boot the kernel
@@ -90,4 +82,3 @@ echo "Booting kernel..."
 echo "========================"
 echo ""
 @@KERNEL_BOOTCMD@@ ${kernel_addr_r} - ${fdt_addr}
-

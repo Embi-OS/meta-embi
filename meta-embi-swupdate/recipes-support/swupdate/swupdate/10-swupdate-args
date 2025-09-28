@@ -1,0 +1,4 @@
+SWUPDATE_CONF_FILE=/usr/lib/swupdate/swupdate.cfg
+SWUPDATE_WEBSERVER_ARGS="-r /www"
+SWUPDATE_SURICATTA_ARGS="-S general"
+export SWUPDATE_ARGS="-f ${SWUPDATE_CONF_FILE}"

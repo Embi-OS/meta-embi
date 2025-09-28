@@ -4,6 +4,9 @@
 ##
 ############################################################################
 
+# set embi vversion
+EMBI_VERSION = "25.9.0"
+
 # set machine hostname
 MACHINE_HOSTNAME = "embi-${MACHINE}"
 

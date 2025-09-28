@@ -6,8 +6,9 @@ fi
 
 function get_current_root_device
 {
-    PARTUUID=$(cat /proc/cmdline | sed 's/root=PARTUUID=\([^ ]*\).*/\1/')
-    CURRENT_ROOT=$(readlink -f /dev/disk/by-partuuid/$PARTUUID)
+    # Extract current root partition from kernel cmdline (PARTUUID)
+    PARTUUID=$(sed -n 's/.*root=PARTUUID=\([^ ]*\).*/\1/p' /proc/cmdline)
+    CURRENT_ROOT=$(readlink -f "/dev/disk/by-partuuid/$PARTUUID")
 }
 
 function get_update_part
@@ -28,32 +29,38 @@ function get_update_device
 function format_update_device
 {
     umount -q $UPDATE_ROOT
-    mkfs.ext4 -q $UPDATE_ROOT -L RFS${UPDATE_PART} -E nodiscard
+    if [ $UPDATE_PART = "2" ]; then
+        mkfs.ext4 -q $UPDATE_ROOT -L RFS1 -E nodiscard
+    else
+        mkfs.ext4 -q $UPDATE_ROOT -L RFS2 -E nodiscard
+    fi
 }
 
 if [ $1 == "preinst" ]; then
-    # get the current root device
-    get_current_root_device
+    echo "[update.sh] Running preinst"
 
-    # get the device to be updated 
+    get_current_root_device
     get_update_part
     get_update_device
 
-    # format the device to be updated
+    echo "[update.sh] Current root: $CURRENT_ROOT (part $CURRENT_PART)"
+    echo "[update.sh] Update target: $UPDATE_ROOT (part $UPDATE_PART)"
+
     format_update_device
 
-    # create a symlink for the update process
-    ln -sf $UPDATE_ROOT /dev/update
+    ln -sf "$UPDATE_ROOT" /dev/update
+    echo "[update.sh] Created symlink /dev/update -> $UPDATE_ROOT"
 fi
 
 if [ $1 == "postinst" ]; then
+    echo "[update.sh] Running postinst"
+
     get_current_root_device
-
     get_update_part
+    get_update_device
 
-    mmcdev=${CURRENT_ROOT::-2}
+    echo "[update.sh] Setting U-Boot environment variable distro_rootpart=$UPDATE_PART"
+    fw_setenv distro_rootpart "$UPDATE_PART"
 
-    # eMMC needs to have reliable write on
-    parted $mmcdev set $UPDATE_PART boot on &> /dev/null
-    parted $mmcdev set $CURRENT_PART boot off &> /dev/null
+    echo "[update.sh] Update prepared. Next boot will use rootfs on partition $UPDATE_PART"
 fi

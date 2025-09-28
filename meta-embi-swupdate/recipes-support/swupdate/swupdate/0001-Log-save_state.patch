@@ -1,0 +1,28 @@
+From d78fa93e9248b7f9b95139535bae4410b2ab9914 Mon Sep 17 00:00:00 2001
+From: Diego Rondini <diego.rondini@kynetics.com>
+Date: Wed, 21 Jun 2017 08:40:43 +0000
+Subject: [PATCH] Log save_state
+
+---
+ core/state.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/core/state.c b/core/state.c
+index 2ec01f5..51c936b 100644
+--- a/core/state.c
++++ b/core/state.c
+@@ -38,8 +38,9 @@ static int do_save_state(char *key, char* value)
+ 	char c = *value;
+ 	if (c < STATE_OK || c > STATE_LAST)
+ 		return -EINVAL;
+-
+-	return bootloader_env_set(key, value);
++	int ret = bootloader_env_set(key, value);
++	INFO("Saved value '%s' to key '%s' with return value '%d'.\n", value, key, ret);
++	return ret;
+ }
+ 
+ int save_state(update_state_t value)
+-- 
+2.7.4
+

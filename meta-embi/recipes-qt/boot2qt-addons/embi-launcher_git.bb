@@ -16,7 +16,17 @@ SRC_URI += " \
 
 SRCREV = "${AUTOREV}"
 
-DEPENDS += "qtbase qtdeclarative qtdeclarative-native qtvirtualkeyboard qtcharts qtsvg qtsvg-native"
+# Build-time deps
+DEPENDS += " \
+    qtbase \
+    qtdeclarative \
+    qtdeclarative-native \
+    qtvirtualkeyboard \
+    qtcharts \
+    qtsvg \
+    qtsvg-native \
+    swupdate \
+"
 
 S = "${WORKDIR}/git"
 

@@ -10,6 +10,7 @@ LICENSE = "CLOSED"
 
 SRC_URI = " \
     file://sw-description \
+    file://update.sh \
 "
 
 inherit swupdate
