@@ -4,7 +4,7 @@
 ##
 ############################################################################
 
-DESCRIPTION = "SWUpdate packagegroup for Embi OS Linux image"
+DESCRIPTION = "SWUpdate packagegroup for Embi-OS Linux image"
 SUMMARY = "Packagegroups which provide SWUpdate releated packages"
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
@@ -28,6 +28,7 @@ RRECOMMENDS:packagegroup-swupdate-cli = "\
     swupdate \
     swupdate-www \
     swupdate-client \
+    swupdate-ipc \
     swupdate-progress \
 "
 

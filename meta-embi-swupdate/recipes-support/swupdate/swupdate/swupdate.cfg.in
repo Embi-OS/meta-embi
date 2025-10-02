@@ -1,0 +1,58 @@
+globals :
+{
+    verbose = false;
+    loglevel = 5;
+    syslog = true;
+};
+
+identify : (
+    { name = "image"; value = "@BB_IMAGE_NAME@"; },
+    { name = "board"; value = "@BB_MACHINE_NAME@"; },
+    { name = "version"; value = "@BB_IMAGE_VERSION@"; },
+    { name = "branch"; value = "@SOFTWARE_BRANCH@"; },
+    { name = "device"; value = "@IDENTIFY_DEVICE@"; }
+);
+
+webserver :
+{
+    api               = 2;
+    timeout           = 20;
+    listening_ports   = @MONGOOSE_PORT@;
+};
+
+gservice :
+{
+    enable            = true;
+    url               = "@GSERVICE_URL@";
+    logurl            = "@GSERVICE_URL@/log";
+    logevent : (
+        {event = "check"; format="date,check,device"},
+        {event = "started"; format="date,started,device"},
+        {event = "success"; format="date,success,device"},
+        {event = "fail"; format="date,fail,device"}
+    );
+
+    nocheckcert       = true;
+    polldelay         = @GSERVICE_POLLDELAY@;
+};
+
+suricatta :
+{
+    enable            = true;
+    tenant            = "default";
+    id                = "@SURICATTA_ID@";
+    url               = "@SURICATTA_URL@";
+    polldelay         = @SURICATTA_POLLDELAY@;
+    nocheckcert       = true;
+    retry             = 4;
+    retrywait         = 200;
+    
+    targettoken       = "@SURICATTA_TARGETTOKEN@";
+    gatewaytoken      = "@SURICATTA_GATEWAYTOKEN@";
+    usetokentodwl     = true;
+/*
+    cafile            = "/etc/ssl/cafile";
+    sslkey            = "/etc/ssl/sslkey";
+    sslcert           = "/etc/ssl/sslcert";
+*/
+};

@@ -12,38 +12,37 @@ repo sync
 
 export MACHINE=raspberrypi-armv8 && source ./setup-environment.sh
 
-bitbake meta-b2qt-embedded-qbsp --runall=fetch
-bitbake meta-b2qt-embedded-qbsp
-
-# To build with a static build of Qt
-export BB_ENV_PASSTHROUGH_ADDITIONS="$BB_ENV_PASSTHROUGH_ADDITIONS EMBI_QTBASE_STATIC"
-EMBI_QTBASE_STATIC="1" bitbake meta-b2qt-embedded-qbsp
+bitbake embi-image-swu --runall=fetch
+bitbake embi-image-swu
 
 # Print VARIABLE content
-bitbake -e meta-b2qt-embedded-qbsp | grep "^DISTRO_FEATURES"
-bitbake -e meta-b2qt-embedded-qbsp | grep "^IMAGE_FEATURES"
-bitbake -e meta-b2qt-embedded-qbsp | grep "^EXTRA_IMAGE_FEATURES"
+bitbake -e embi-image-swu | grep "^DISTRO_FEATURES"
+bitbake -e embi-image-swu | grep "^IMAGE_FEATURES"
+bitbake -e embi-image-swu | grep "^EXTRA_IMAGE_FEATURES"
 
 # Print PACKAGECONFIG content for qtbase
 bitbake -e qtbase | grep "^PACKAGECONFIG"
 
 # Clean
-bitbake -c cleanall meta-b2qt-embedded-qbsp
+bitbake -c cleanall embi-image-swu
 ```
-Once the build is done, the image is located in this folder and can directly be used with the pi-imager:
+Once the build is done, the image is located in this folder and can directly be used with the pi-imager or swupdate:
 ```filenames
-<YoctoBuildDir>/tmp/deploy/images/${MACHINE}/b2qt-embedded-qt6-image-${MACHINE}.wic.xz
+<YoctoBuildDir>/tmp/deploy/images/${MACHINE}/embi-image-${MACHINE}.rootfs.wic.xz
+<YoctoBuildDir>/tmp/deploy/images/${MACHINE}/embi-image-${MACHINE}.rootfs.swu
 ```
 
 A QBSP file is also available and can be used by the Qt MaintenanceTool:
 ```filenames
-<YoctoBuildDir>/tmp/deploy/qbsp/meta-b2qt-embedded-qbsp-x86_64-${MACHINE}.qbsp
+<YoctoBuildDir>/tmp/deploy/qbsp/meta-embi-embedded-qbsp-x86_64-${MACHINE}-${QT_VERSION}.qbsp
 ```
 
 # Resize sd card partition
 After the first boot you may notice that the root partition does not fill the entire sd card space. It can be resized like so:
 ```bash
-/usr/sbin/fs-maximize.sh
+parted -s /dev/mmcblk0 resizepart 4 100%
+resize2fs /dev/mmcblk0p4
+reboot
 ```
 
 # Audio support

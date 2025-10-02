@@ -29,11 +29,6 @@ DISTRO_FEATURES:remove = "virtualization"
 IMAGE_FEATURES:remove = "debug-tweaks"
 EXTRA_IMAGE_FEATURES:remove = "debug-tweaks"
 
-# Qt build configuration
-EMBI_QTBASE_OPTIMIZE_SIZE ?= "0"
-EMBI_QTBASE_STATIC ?= "0"
-EMBI_QTBASE_LTCG ?= "0"
-
 # remove boot2qt-demolauncher
 USE_EMBI_LAUNCHER ?= "1"
 
