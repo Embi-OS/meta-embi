@@ -1,5 +1,5 @@
 [Unit]
-Description=Embi-OS Launcher
+Description=Embi-OS Ecosystem
 After=systemd-user-sessions.service
 ConditionFileIsExecutable=!/etc/default/b2qt
 Conflicts=startupscreen.service

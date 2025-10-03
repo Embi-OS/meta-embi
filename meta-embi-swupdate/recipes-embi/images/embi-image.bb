@@ -28,5 +28,5 @@ IMAGE_INSTALL += "\
     packagegroup-rpi \
     packagegroup-embi \
     packagegroup-swupdate \
-    embi-launcher \
+    embi-ecosystem \
 "
