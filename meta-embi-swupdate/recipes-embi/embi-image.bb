@@ -1,9 +1,3 @@
-############################################################################
-##
-## This file is part of the meta-embi layer.
-##
-############################################################################
-
 SUMMARY = "Embi-OS Image"
 LICENSE = "CLOSED"
 
@@ -33,5 +27,6 @@ IMAGE_INSTALL += "\
     ${@bb.utils.contains("DISTRO_FEATURES", "virtualization", "packagegroup-docker", "", d)} \
     packagegroup-rpi \
     packagegroup-embi \
-    ${@'embi-launcher' if bb.utils.to_boolean(d.getVar('USE_EMBI_LAUNCHER')) else ''} \
+    packagegroup-swupdate \
+    embi-launcher \
 "

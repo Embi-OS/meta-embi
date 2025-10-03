@@ -1,4 +1,3 @@
-
 ALSA_AUDIO ?= "off"
 MAX_FRAMEBUFFERS ?= "2"
 

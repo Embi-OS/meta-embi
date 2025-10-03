@@ -1,9 +1,3 @@
-############################################################################
-##
-## This file is part of the meta-embi layer.
-##
-############################################################################
-
 SUMMARY = "Packagegroups which provide cmdline releated packages"
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
@@ -45,7 +39,6 @@ SUMMARY:packagegroup-rpi-utils = "Recommended for any image"
 RRECOMMENDS:packagegroup-rpi-utils = "\
     u-boot \
     raspi-utils \
-    set-hostname \
     boot-mount \
 "
 

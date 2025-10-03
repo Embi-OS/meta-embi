@@ -1,0 +1,25 @@
+From 41dd6469ef647c0ee5c7280ccd27e526994434bb Mon Sep 17 00:00:00 2001
+From: Romain-Donze <romaindonze.95@gmail.com>
+Date: Thu, 2 Oct 2025 20:19:10 +0200
+Subject: [PATCH] Set B2QT_PREFIX to /etc/default/b2qt
+
+---
+ main.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/main.cpp b/main.cpp
+index 6f05471..c478c89 100644
+--- a/main.cpp
++++ b/main.cpp
+@@ -41,7 +41,7 @@
+ #define PID_FILE "/data/user/.appcontroller"
+ #define FEATURES "restart perf eglresize qmldebugservices explicitdebugports"
+ 
+-#define B2QT_PREFIX "/usr/bin/b2qt"
++#define B2QT_PREFIX "/etc/default/b2qt"
+ 
+ static int serverSocket = -1;
+ 
+-- 
+2.34.1
+

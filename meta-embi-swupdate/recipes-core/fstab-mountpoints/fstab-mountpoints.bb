@@ -1,9 +1,3 @@
-############################################################################
-##
-## This file is part of the meta-embi layer.
-##
-############################################################################
-
 SUMMARY = "Ensure fstab mountpoints exist at boot"
 DESCRIPTION = "Installs a script and systemd service that creates all mountpoints listed in /etc/fstab before local-fs.target."
 LICENSE = "CLOSED"

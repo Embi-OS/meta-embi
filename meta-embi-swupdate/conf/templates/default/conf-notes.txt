@@ -1,5 +1,5 @@
 
-### Shell environment set up for building Embi OS image. ###
+### Shell environment set up for building Embi-OS image. ###
 
 You can now run 'bitbake <target>'
 
@@ -15,5 +15,5 @@ SWU target is:
     
 If you only want to fetch source before running the build, simply add '--runall=fetch'
 
-For more information about Embi OS, see https://github.com/Embi-OS/
+For more information about Embi-OS, see https://github.com/Embi-OS/
 

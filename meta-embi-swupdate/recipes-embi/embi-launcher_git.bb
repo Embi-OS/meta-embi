@@ -1,10 +1,4 @@
-############################################################################
-##
-## This file is part of the meta-embi layer.
-##
-############################################################################
-
-DESCRIPTION = "Embi OS Launcher"
+DESCRIPTION = "Embi-OS Launcher"
 LICENSE = "CLOSED"
 
 inherit qt6-cmake systemd
@@ -33,8 +27,9 @@ S = "${WORKDIR}/git"
 # Build type: Debug, Release, MinSizeRel, RelWithDebInfo
 BUILD_TYPE ?= "Release"
 
-EXTRA_OECMAKE += "\
+EXTRA_OECMAKE += " \
     -DCMAKE_BUILD_TYPE=${BUILD_TYPE} \
+    -DDEFAULT_PROJECT_VERSION=${EMBI_VERSION} \
 "
 
 do_install:append() {

@@ -1,8 +1,3 @@
-############################################################################
-##
-## This file is part of the meta-embi layer.
-##
-############################################################################
 FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 
 DESCRIPTION = "swu image for Embi-OS"

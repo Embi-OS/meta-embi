@@ -1,11 +1,5 @@
-############################################################################
-##
-## This file is part of the meta-embi layer.
-##
-############################################################################
-
-DESCRIPTION = "Base packagegroup for Embi OS Linux image"
-SUMMARY = "Packagegroups which provide basic Embi OS releated packages"
+DESCRIPTION = "Base packagegroup for Embi-OS Linux image"
+SUMMARY = "Packagegroups which provide basic Embi-OS releated packages"
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 

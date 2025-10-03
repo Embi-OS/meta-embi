@@ -1,0 +1,11 @@
+[Unit]
+Description=B2Qt user application
+After=systemd-user-sessions.service
+ConditionPathExists=/etc/default/b2qt
+
+[Service]
+User=root
+ExecStart=-/usr/bin/appcontroller /etc/default/b2qt
+
+[Install]
+WantedBy=multi-user.target

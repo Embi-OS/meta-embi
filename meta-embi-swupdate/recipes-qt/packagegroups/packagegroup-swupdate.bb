@@ -1,9 +1,3 @@
-############################################################################
-##
-## This file is part of the meta-embi layer.
-##
-############################################################################
-
 DESCRIPTION = "SWUpdate packagegroup for Embi-OS Linux image"
 SUMMARY = "Packagegroups which provide SWUpdate releated packages"
 

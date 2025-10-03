@@ -1,9 +1,10 @@
 ############################################################################
 ##
-## This file is part of the meta-embi layer.
+## Config file related to bitbake
 ##
 ############################################################################
 
+# default bitbake variables
 BB_NUMBER_THREADS = "6"
 BB_NICE_LEVEL ??= "19"
 BB_TASK_NICE_LEVEL ??= "19"

@@ -1,11 +1,11 @@
 ############################################################################
 ##
-## This file is part of the meta-embi layer.
+## Config file related to boot2qt
 ##
 ############################################################################
 
-# set embi vversion
-EMBI_VERSION = "25.9.0"
+# set embi version
+EMBI_VERSION = "25.10.0"
 
 # set machine hostname
 MACHINE_HOSTNAME = "embi-${MACHINE}"
@@ -28,9 +28,6 @@ DISTRO_FEATURES:remove = "virtualization"
 # remove debug-tweaks for production build
 IMAGE_FEATURES:remove = "debug-tweaks"
 EXTRA_IMAGE_FEATURES:remove = "debug-tweaks"
-
-# remove boot2qt-demolauncher
-USE_EMBI_LAUNCHER ?= "1"
 
 # append locales
 IMAGE_LINGUAS:append = " \

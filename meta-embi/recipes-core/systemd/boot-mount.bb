@@ -1,9 +1,3 @@
-############################################################################
-##
-## This file is part of the meta-embi layer.
-##
-############################################################################
-
 SUMMARY = "Systemd mount unit for Raspberry Pi boot partition"
 DESCRIPTION = "Ensures the FAT boot partition is mounted at /boot early in boot"
 LICENSE = "CLOSED"

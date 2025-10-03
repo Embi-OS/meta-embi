@@ -1,9 +1,3 @@
-############################################################################
-##
-## This file is part of the meta-embi layer.
-##
-############################################################################
-
 SUMMARY = "OverlayFS mount for persistent storage"
 LICENSE = "CLOSED"
 
