@@ -8,8 +8,7 @@ SRC_URI += " \
     file://embi-ecosystem.service \
     "
 
-# SRCREV = "${AUTOREV}"
-SRCREV = "ef0633e56d04dbcc8fb7c04f1fd9cc800f95cda2"
+SRCREV = "${AUTOREV}"
 
 # Build-time deps
 DEPENDS += " \
