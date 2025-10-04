@@ -4,31 +4,13 @@
 ##
 ############################################################################
 
-# Select boot medium: "mmc", "usb", "pci"
-RPI_BOOT_MEDIA ?= "usb"
-
-# For mmc and pci, one must use "p1", "p2" etc...
-RPI_BOOTFS_NUM ?= "1"
-RPI_ROOTFS_NUM ?= "2"
-
-# Root partition mapping depending on boot media
-RPI_DISK_PARTITION:mmc = "/dev/mmcblk0"
-RPI_DISK_PARTITION:usb = "/dev/sda"
-RPI_DISK_PARTITION:pci = "/dev/nvme0n1"
-RPI_DISK_PARTITION = "${@d.getVar('RPI_DISK_PARTITION:' + d.getVar('RPI_BOOT_MEDIA'))}"
-RPI_BOOT_PARTITION = "${RPI_DISK_PARTITION}${RPI_BOOTFS_NUM}"
-RPI_ROOT_PARTITION = "${RPI_DISK_PARTITION}${RPI_ROOTFS_NUM}"
-
-# For meta-raspberrypi, keep a BOOT_MEDIA var that mirrors RPI_BOOT_MEDIA
-CMDLINE_ROOT_PARTITION = "${RPI_ROOT_PARTITION}"
-BOOT_MEDIA = "${RPI_BOOT_MEDIA}"
+# For meta-raspberrypi
+BOOT_MEDIA = "usb"
+CMDLINE_ROOT_PARTITION = "
 WIC_CREATE_EXTRA_ARGS ?= "--no-fstab-update"
 
 # enable u-boot support
 RPI_USE_U_BOOT = "1"
-
-# sd-card partition
-WKS_FILE = "embi-sdimage-rpi.wks"
 
 # --------------------------------------------------------------------------
 # General Raspberry Pi system config

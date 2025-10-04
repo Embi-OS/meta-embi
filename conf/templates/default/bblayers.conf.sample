@@ -27,9 +27,7 @@ BBLAYERS ?= " \
   ${BSPDIR}/sources/meta-boot2qt/meta-boot2qt-distro \
   ${BSPDIR}/sources/meta-mingw \
   ${BSPDIR}/sources/meta-qt6 \
-  ${BSPDIR}/sources/meta-swupdate \
-  ${BSPDIR}/sources/meta-embi/meta-embi \
-  ${BSPDIR}/sources/meta-embi/meta-embi-swupdate \
+  ${BSPDIR}/sources/meta-embi \
   "
   
 CLANG = "${BSPDIR}/sources/meta-clang"
