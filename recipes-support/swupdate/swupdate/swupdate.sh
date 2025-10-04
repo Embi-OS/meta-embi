@@ -33,7 +33,7 @@ parse_ini() {
         key=$(echo "$key" | tr '[:lower:]' '[:upper:]' | sed 's/[^A-Z0-9_]/_/g')
 
         echo "$key = $value"
-        eval "export $key=\$value"
+        eval "$key=\$value"
     done < "$ini_file"
 }
  

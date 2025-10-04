@@ -6,6 +6,7 @@
 
 # set embi version
 EMBI_VERSION = "25.10.0"
+EMBI_IMAGE_BASENAME = "embi-image"
 
 # set machine hostname
 MACHINE_HOSTNAME = "embi-${MACHINE}"

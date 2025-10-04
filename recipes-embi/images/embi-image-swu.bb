@@ -10,9 +10,9 @@ SRC_URI = " \
 
 inherit swupdate
 
-IMAGE_BASENAME = "embi-image"
+IMAGE_BASENAME = "${EMBI_IMAGE_BASENAME}"
 
-EMBI_SWUPDATE_TARGET_IMAGE = "embi-image"
+EMBI_SWUPDATE_TARGET_IMAGE = "${EMBI_IMAGE_BASENAME}"
 EMBI_SWUPDATE_TARGET_IMAGE_FSTYPE = ".tar.zst"
 
 EMBI_SWUPDATE_TARGET_IMAGE_FILE = "${EMBI_SWUPDATE_TARGET_IMAGE}-${MACHINE}.rootfs${EMBI_SWUPDATE_TARGET_IMAGE_FSTYPE}"
@@ -37,4 +37,4 @@ python() {
 }
 
 # Ensure the QBSP package is built whenever we build the SWUpdate image
-do_build[depends] += "meta-b2qt-embedded-qbsp:do_qbsp"
+do_build[depends] += "meta-b2qt-embedded-qbsp:do_build"

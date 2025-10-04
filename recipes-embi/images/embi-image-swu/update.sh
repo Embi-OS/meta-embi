@@ -57,7 +57,6 @@ if [ $1 == "postinst" ]; then
 
     get_current_root_device
     get_update_part
-    get_update_device
 
     echo "[update.sh] Setting U-Boot environment variable distro_rootpart=$UPDATE_PART"
     fw_setenv distro_rootpart "$UPDATE_PART"

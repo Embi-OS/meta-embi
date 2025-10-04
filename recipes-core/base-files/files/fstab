@@ -1,4 +1,4 @@
-# default fstab for rpi boards
+# default fstab
 
 /dev/root            /                    auto       defaults              1  1
 proc                 /proc                proc       defaults              0  0

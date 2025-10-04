@@ -48,10 +48,6 @@ fi
 export TEMPLATECONF=$(readlink -f "${PWD}/sources/templates")
 . sources/poky/oe-init-build-env ${BUILDDIRECTORY}
 
-# use sources from Qt SDK if that is available
-sed -i -e "/QT_SDK_PATH/s:\"\":\"${QT_SDK_PATH}\":" conf/local.conf
-
 unset BUILDDIRECTORY
-unset QT_SDK_PATH
 unset TEMPLATECONF
 unset LAYERSCONF
