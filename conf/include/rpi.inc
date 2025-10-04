@@ -5,7 +5,7 @@
 ############################################################################
 
 # For meta-raspberrypi
-BOOT_MEDIA = "usb"
+BOOT_MEDIA = "mmc"
 CMDLINE_ROOT_PARTITION = ""
 WIC_CREATE_EXTRA_ARGS ?= "--no-fstab-update"
 

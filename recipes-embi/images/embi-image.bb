@@ -1,4 +1,4 @@
-SUMMARY = "Embi-OS Image"
+SUMMARY = "Embi-OS Image [${BOOT_MEDIA}]"
 LICENSE = "CLOSED"
 
 DEPLOY_CONF_TYPE = "Boot2Qt ${QT_VERSION}"
@@ -14,6 +14,8 @@ IMAGE_FEATURES += "\
 
 inherit core-image deploy-buildinfo
 inherit consistent_timestamps
+
+IMAGE_BASENAME = "${EMBI_IMAGE_BASENAME}-${BOOT_MEDIA}"
 
 # add some extra space to the device images
 IMAGE_ROOTFS_EXTRA_SPACE = "100000"
