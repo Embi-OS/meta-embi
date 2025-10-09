@@ -5,7 +5,9 @@ ConditionPathExists=/etc/default/b2qt
 
 [Service]
 User=root
-ExecStart=-/usr/bin/appcontroller /etc/default/b2qt
+ExecStart=/usr/bin/b2qt.sh
+Restart=on-failure
+RestartSec=5s
 
 [Install]
 WantedBy=multi-user.target
