@@ -1,4 +1,4 @@
-DESCRIPTION = "SWUpdate packagegroup for Embi-OS Linux image"
+DESCRIPTION = "SWUpdate packagegroup"
 SUMMARY = "Packagegroups which provide SWUpdate releated packages"
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"

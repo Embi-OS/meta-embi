@@ -1,11 +1,11 @@
 ############################################################################
 ##
-## Config file related to raspberrypi
+## Config file related to the board
 ##
 ############################################################################
 
 # For meta-raspberrypi
-BOOT_MEDIA = "mmc"
+BOOT_MEDIA = "${PRODUCT_IMAGE_BRANCH}"
 CMDLINE_ROOT_PARTITION = ""
 WIC_CREATE_EXTRA_ARGS ?= "--no-fstab-update"
 

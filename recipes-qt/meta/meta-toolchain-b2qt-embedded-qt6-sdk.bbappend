@@ -1,7 +1,7 @@
-DESCRIPTION = "SDK toolchain for the Embi-OS image"
+DESCRIPTION = "SDK toolchain for the image"
 
 TOOLCHAIN_TARGET_TASK += " \
-    packagegroup-rpi \
-    packagegroup-embi \
+    packagegroup-utils \
+    packagegroup-system \
     packagegroup-swupdate \
 "

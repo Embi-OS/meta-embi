@@ -12,29 +12,33 @@ repo sync
 
 export MACHINE=raspberrypi-armv8 && source ./setup-environment.sh
 
-bitbake embi-image-swu --runall=fetch
-bitbake embi-image-swu
+bitbake b2qt-image-swu --runall=fetch
+bitbake b2qt-image-swu
+
+# To build with usb boot support
+export BB_ENV_PASSTHROUGH_ADDITIONS="$BB_ENV_PASSTHROUGH_ADDITIONS PRODUCT_IMAGE_BRANCH"
+PRODUCT_IMAGE_BRANCH="usb" bitbake b2qt-image-swu
 
 # Print VARIABLE content
-bitbake -e embi-image-swu | grep "^DISTRO_FEATURES"
-bitbake -e embi-image-swu | grep "^IMAGE_FEATURES"
-bitbake -e embi-image-swu | grep "^EXTRA_IMAGE_FEATURES"
+bitbake -e b2qt-image-swu | grep "^DISTRO_FEATURES"
+bitbake -e b2qt-image-swu | grep "^IMAGE_FEATURES"
+bitbake -e b2qt-image-swu | grep "^EXTRA_IMAGE_FEATURES"
 
 # Print PACKAGECONFIG content for qtbase
 bitbake -e qtbase | grep "^PACKAGECONFIG"
 
 # Clean
-bitbake -c cleanall embi-image-swu
+bitbake -c cleanall b2qt-image-swu
 ```
 Once the build is done, the image is located in this folder and can directly be used with the pi-imager or swupdate:
 ```filenames
-<YoctoBuildDir>/tmp/deploy/images/${MACHINE}/embi-image-${MACHINE}.rootfs.wic.xz
-<YoctoBuildDir>/tmp/deploy/images/${MACHINE}/embi-image-${MACHINE}.rootfs.swu
+<YoctoBuildDir>/tmp/deploy/images/${MACHINE}/embi-image-${MACHINE}.wic.xz
+<YoctoBuildDir>/tmp/deploy/images/${MACHINE}/embi-image-${MACHINE}.swu
 ```
 
 A QBSP file is also available and can be used by the Qt MaintenanceTool:
 ```filenames
-<YoctoBuildDir>/tmp/deploy/qbsp/meta-embi-embedded-qbsp-x86_64-${MACHINE}-${QT_VERSION}.qbsp
+<YoctoBuildDir>/tmp/deploy/qbsp/meta-b2qt-embedded-qbsp-x86_64-${MACHINE}-${QT_VERSION}.qbsp
 ```
 
 # Resize sd card partition

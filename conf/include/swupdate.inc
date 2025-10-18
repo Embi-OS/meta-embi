@@ -4,10 +4,10 @@
 ##
 ############################################################################
 
-EMBI_BOOT_LABEL = "boot"
-EMBI_ROOTFS_LABEL_A = "RFS1"
-EMBI_ROOTFS_LABEL_B = "RFS2"
-EMBI_CONFIG_LABEL = "config"
+PRODUCT_BOOT_LABEL = "boot"
+PRODUCT_ROOTFS_LABEL_A = "RFS1"
+PRODUCT_ROOTFS_LABEL_B = "RFS2"
+PRODUCT_CONFIG_LABEL = "config"
 
 WKS_FILE = "embi-swupdate-sdimage-rpi.wks.in"
 IMAGE_FSTYPES:append = " \

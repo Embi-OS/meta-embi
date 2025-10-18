@@ -13,8 +13,8 @@ BB_TASK_IONICE_LEVEL ??= "3.7"
 # include boot2qt config
 include conf/include/boot2qt.inc
 
-# include rpi config
-include conf/include/rpi.inc
+# include board config
+include conf/include/board.inc
 
 # include user config
 include conf/include/user.inc

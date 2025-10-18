@@ -9,7 +9,7 @@
 # - Must be FAT (vfat) because the Raspberry Pi firmware reads it directly
 # - Marked active (bootable)
 # - Fixed size: 200 MB, aligned to 4096 sectors (~2 MiB)
-part /boot --source bootimg-partition --ondisk mmcblk0 --fstype=vfat --label ${EMBI_BOOT_LABEL} --active --align 4096 --fixed-size 200
+part /boot --source bootimg-partition --ondisk mmcblk0 --fstype=vfat --label ${PRODUCT_BOOT_LABEL} --active --align 4096 --fixed-size 200
 
 # --------------------------------------------------
 # Root filesystem 1 (/ , ext4)
@@ -18,18 +18,18 @@ part /boot --source bootimg-partition --ondisk mmcblk0 --fstype=vfat --label ${E
 # - Populated with IMAGE_ROOTFS at build time
 # - Ext4 format
 # - Fixed size: 4 GB
-part / --source rootfs --ondisk mmcblk0 --fstype=ext4 --label ${EMBI_ROOTFS_LABEL_A} --align 4096 --fixed-size 4096
+part / --source rootfs --ondisk mmcblk0 --fstype=ext4 --label ${PRODUCT_ROOTFS_LABEL_A} --align 4096 --fixed-size 4096
 
 # ------------------------
 # Root filesystem 2 (ext4)
 # ------------------------
 # - Ext4 format
 # - Fixed size: 4 GB
-part --ondisk mmcblk0 --fstype=ext4 --label ${EMBI_ROOTFS_LABEL_B} --align 4096 --fixed-size 4096
+part --ondisk mmcblk0 --fstype=ext4 --label ${PRODUCT_ROOTFS_LABEL_B} --align 4096 --fixed-size 4096
 
 # ------------------------
 # Config partition (ext4)
 # ------------------------
 # - Contains the persistant data
 # - Fixed size: 1 GB
-part --ondisk mmcblk0 --fstype=ext4 --label ${EMBI_CONFIG_LABEL} --align 4096 --size 1024
+part --ondisk mmcblk0 --fstype=ext4 --label ${PRODUCT_CONFIG_LABEL} --align 4096 --size 1024

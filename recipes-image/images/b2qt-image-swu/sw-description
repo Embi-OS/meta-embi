@@ -1,12 +1,12 @@
 software =
 {
     @@MACHINE@@ = {
-        version = "@@EMBI_VERSION@@";
-        description = "Embi-OS update image";
+        version = "@@PRODUCT_VERSION@@";
+        description = "@@PRODUCT_COMPANY_NAME@@ BootT2Qt update image";
         hardware-compatibility: ["1.0"];
         files: (
             {
-                filename = "@@EMBI_SWUPDATE_TARGET_IMAGE_FILE@@";
+                filename = "@@META_SWUPDATE_TARGET_IMAGE_FILE@@";
                 type = "archive";
                 compressed = "zstd";
                 device = "/dev/update";

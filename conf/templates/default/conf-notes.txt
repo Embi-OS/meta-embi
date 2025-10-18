@@ -1,5 +1,5 @@
 
-### Shell environment set up for building Embi-OS image. ###
+### Shell environment set up for building Boot2Qt image. ###
 
 You can now run 'bitbake <target>'
 
@@ -11,9 +11,6 @@ QBSP target is:
     meta-b2qt-embedded-qbsp
 
 SWU target is:
-    embi-image-swu
+    b2qt-image-swu
     
 If you only want to fetch source before running the build, simply add '--runall=fetch'
-
-For more information about Embi-OS, see https://github.com/Embi-OS/
-

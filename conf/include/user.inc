@@ -14,8 +14,8 @@ inherit extrausers
 
 # Hash generated with "printf "%q" $(mkpasswd -m sha256crypt <password>)"
 
-EMBI_ROOT_PASSWORD ?= ""
+PRODUCT_ROOT_PASSWORD ?= ""
 
 EXTRA_USERS_PARAMS = " \
-    usermod -p '${EMBI_ROOT_PASSWORD}' root; \
+    usermod -p '${PRODUCT_ROOT_PASSWORD}' root; \
     "

@@ -59,7 +59,7 @@ PARALLEL_MAKE ?= "-j ${@oe.utils.cpu_count()}"
 #
 # This sets the default machine to be qemux86-64 if no other machine is selected:
 MACHINE ??= "qemux86-64"
-MACHINE_HOSTNAME ?= "embi-${MACHINE}"
+MACHINE_HOSTNAME ?= "b2qt-${MACHINE}"
 
 #
 # Where to place downloads
@@ -323,4 +323,5 @@ QT_SDK_PATH = ""
 # you can enable it by uncommenting following line
 #DISTRO_FEATURES_BACKFILL:append = " qtsaferenderer"
 
+include conf/distro/include/${MACHINE}.pre.inc
 include conf/include/local.post.inc

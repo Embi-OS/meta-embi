@@ -4,12 +4,16 @@
 ##
 ############################################################################
 
-# set embi version
-EMBI_VERSION = "25.10.0"
-EMBI_IMAGE_BASENAME = "embi-image"
+# set product version
+PRODUCT_COMPANY_NAME = "Embi"
+PRODUCT_COMPANY_NAME_LOWER = "embi"
+PRODUCT_VERSION = "25.10.0"
+PRODUCT_VERSION_SHORT = "${@''.join('%02d' % int(x) for x in (d.getVar('PRODUCT_VERSION') or '0.0.0').split('.'))}"
+PRODUCT_IMAGE_BASENAME = "${PRODUCT_COMPANY_NAME_LOWER}-image"
+PRODUCT_IMAGE_BRANCH ?= "mmc"
 
 # set machine hostname
-MACHINE_HOSTNAME = "embi-${MACHINE}"
+MACHINE_HOSTNAME = "${PRODUCT_COMPANY_NAME_LOWER}-${MACHINE}"
 
 # default to commercial Qt "opensource"
 QT_EDITION = "commercial"
