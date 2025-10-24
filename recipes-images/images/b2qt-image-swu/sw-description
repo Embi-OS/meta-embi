@@ -6,12 +6,12 @@ software =
         hardware-compatibility: ["1.0"];
         files: (
             {
-                filename = "@@META_SWUPDATE_TARGET_BOOT_IMAGE_FILE@@";
+                filename = "@@META_SWUPDATE_TARGET_IMAGE_BOOT_FILE@@";
                 type = "archive";
                 compressed = "zstd";
                 device = "/dev/boot";
                 filesystem = "vfat";
-                preserve-attributes = false;
+                preserve-attributes = true;
                 path = "/"
             },
             {
