@@ -11,7 +11,7 @@ software =
                 compressed = "zstd";
                 device = "/dev/boot";
                 filesystem = "vfat";
-                preserve-attributes = true;
+                preserve-attributes = false;
                 path = "/"
             },
             {
