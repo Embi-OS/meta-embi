@@ -62,4 +62,3 @@ RRECOMMENDS:packagegroup-system-alsa = "\
     alsa-utils-aplay \
     alsa-utils-amixer \
 "
-

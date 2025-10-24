@@ -15,9 +15,11 @@ export MACHINE=raspberrypi-armv8 && source ./setup-environment.sh
 bitbake b2qt-image-swu --runall=fetch
 bitbake b2qt-image-swu
 
-# To build with usb boot support
+# To build with voh release-mode
+export BB_ENV_PASSTHROUGH_ADDITIONS="$BB_ENV_PASSTHROUGH_ADDITIONS PRODUCT_VERSION"
+export BB_ENV_PASSTHROUGH_ADDITIONS="$BB_ENV_PASSTHROUGH_ADDITIONS PRODUCT_VERSION_NAME"
 export BB_ENV_PASSTHROUGH_ADDITIONS="$BB_ENV_PASSTHROUGH_ADDITIONS PRODUCT_IMAGE_BRANCH"
-PRODUCT_IMAGE_BRANCH="usb" bitbake b2qt-image-swu
+PRODUCT_VERSION="25.10.0" PRODUCT_VERSION_NAME="" PRODUCT_IMAGE_BRANCH="usb" bitbake b2qt-image-swu
 
 # Print VARIABLE content
 bitbake -e b2qt-image-swu | grep "^DISTRO_FEATURES"

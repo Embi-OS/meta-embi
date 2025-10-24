@@ -2,9 +2,18 @@ software =
 {
     @@MACHINE@@ = {
         version = "@@PRODUCT_VERSION@@";
-        description = "@@PRODUCT_COMPANY_NAME@@ BootT2Qt update image";
+        description = "@@PRODUCT_COMPANY_NAME@@ Boot2Qt update image";
         hardware-compatibility: ["1.0"];
         files: (
+            {
+                filename = "@@META_SWUPDATE_TARGET_BOOT_IMAGE_FILE@@";
+                type = "archive";
+                compressed = "zstd";
+                device = "/dev/boot";
+                filesystem = "vfat";
+                preserve-attributes = true;
+                path = "/"
+            },
             {
                 filename = "@@META_SWUPDATE_TARGET_IMAGE_FILE@@";
                 type = "archive";

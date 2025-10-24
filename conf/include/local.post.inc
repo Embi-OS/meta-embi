@@ -4,11 +4,8 @@
 ##
 ############################################################################
 
-# default bitbake variables
-BB_NUMBER_THREADS = "6"
-BB_NICE_LEVEL ??= "19"
-BB_TASK_NICE_LEVEL ??= "19"
-BB_TASK_IONICE_LEVEL ??= "3.7"
+# include bitbake config
+include conf/include/bitbake.inc
 
 # include boot2qt config
 include conf/include/boot2qt.inc

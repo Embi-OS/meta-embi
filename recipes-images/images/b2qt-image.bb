@@ -14,8 +14,9 @@ IMAGE_FEATURES += "\
 
 inherit core-image deploy-buildinfo
 inherit consistent_timestamps
+inherit bootpartition-archive
 
-IMAGE_BASENAME = "${PRODUCT_IMAGE_BASENAME}-${PRODUCT_IMAGE_BRANCH}"
+IMAGE_BASENAME = "${PRODUCT_IMAGE_NAME}"
 IMAGE_NAME_SUFFIX = ""
 IMAGE_VERSION_SUFFIX = ".${PRODUCT_VERSION_SHORT}"
 

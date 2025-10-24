@@ -4,13 +4,11 @@
 You can now run 'bitbake <target>'
 
 Common targets are:
-    b2qt-embedded-qt6-image
     meta-toolchain-b2qt-embedded-qt6-sdk
-
-QBSP target is:
     meta-b2qt-embedded-qbsp
 
-SWU target is:
+Image targets are:
+    b2qt-image
     b2qt-image-swu
     
 If you only want to fetch source before running the build, simply add '--runall=fetch'

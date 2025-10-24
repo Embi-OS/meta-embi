@@ -1,7 +1,7 @@
 DESCRIPTION = "Meta task for QBSP creation"
 
 QBSP_IMAGE_TASK          = "b2qt-image"
-IMAGE_BASENAME           = "${PRODUCT_IMAGE_BASENAME}-${PRODUCT_IMAGE_BRANCH}"
+IMAGE_BASENAME           = "${PRODUCT_IMAGE_NAME}"
 IMAGE_NAME_SUFFIX        = ""
 IMAGE_VERSION_SUFFIX     = ".${PRODUCT_VERSION_SHORT}"
 QBSP_NAME                = "Boot2Qt ${PV}"
