@@ -2,10 +2,16 @@
 Description=B2Qt user application
 After=systemd-user-sessions.service
 ConditionPathExists=/etc/default/b2qt
+StartLimitIntervalSec=300
+StartLimitBurst=5
+OnFailure=b2qt-recovery.service
 
 [Service]
 User=root
-ExecStart=-/usr/bin/appcontroller /etc/default/b2qt
+ExecStart=/usr/bin/appcontroller /etc/default/b2qt
+Restart=on-failure
+RestartSec=3s
+RestartMode=direct
 
 [Install]
 WantedBy=multi-user.target

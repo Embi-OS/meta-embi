@@ -6,9 +6,9 @@ Conflicts=startupscreen.service
 
 [Service]
 User=root
-ExecStart=-/usr/bin/appcontroller /Embi/A00_Launcher
+ExecStart=/usr/bin/appcontroller /Embi/A00_Launcher
 Restart=on-failure
-RestartSec=5s
+RestartSec=3s
 
 [Install]
 WantedBy=multi-user.target

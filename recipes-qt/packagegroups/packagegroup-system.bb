@@ -50,7 +50,6 @@ SUMMARY:packagegroup-system-samba = "Recommended for using Samba"
 RRECOMMENDS:packagegroup-system-samba = "\
     openldap \
     openldap-bin \
-    samba \
     smbclient \
     cifs-utils \
 "
@@ -62,3 +61,4 @@ RRECOMMENDS:packagegroup-system-alsa = "\
     alsa-utils-aplay \
     alsa-utils-amixer \
 "
+

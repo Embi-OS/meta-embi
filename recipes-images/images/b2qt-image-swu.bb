@@ -3,12 +3,12 @@ FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 DESCRIPTION = "swu image for ${PRODUCT_COMPANY_NAME} Boot2Qt"
 LICENSE = "CLOSED"
 
-inherit swupdate
-
 SRC_URI = " \
     file://sw-description \
     file://update.sh \
 "
+
+inherit swupdate
 
 IMAGE_BASENAME = "${PRODUCT_IMAGE_NAME}"
 IMAGE_NAME_SUFFIX = ""

@@ -27,11 +27,12 @@ IMAGE_INSTALL += "\
     packagegroup-qt6-modules \
     packagegroup-b2qt-embedded-base \
     packagegroup-b2qt-embedded-tools \
-    packagegroup-b2qt-embedded-addons \
     ${@bb.utils.contains("DISTRO_FEATURES", "gstreamer", "packagegroup-b2qt-embedded-gstreamer", "", d)} \
     ${@bb.utils.contains("DISTRO_FEATURES", "virtualization", "packagegroup-docker", "", d)} \
+    ${@bb.utils.contains("PRODUCT_IMAGE_BRANCH", "dev", "qdb", "", d)} \
     packagegroup-utils \
     packagegroup-system \
     packagegroup-swupdate \
+    boot2qt-appcontroller \
     embi-ecosystem \
 "
