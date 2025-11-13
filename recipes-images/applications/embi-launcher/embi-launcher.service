@@ -3,6 +3,8 @@ Description=Embi-OS Launcher
 After=systemd-user-sessions.service
 ConditionFileIsExecutable=!/etc/default/b2qt
 Conflicts=startupscreen.service
+StartLimitIntervalSec=60
+StartLimitBurst=3
 
 [Service]
 User=root
