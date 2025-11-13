@@ -1,0 +1,44 @@
+From a9a28e6c5e54da6dfdd3a2d6de0bd49d35a8fbc5 Mon Sep 17 00:00:00 2001
+From: Romain-Donze <romaindonze.95@gmail.com>
+Date: Thu, 13 Nov 2025 13:23:40 +0100
+Subject: [PATCH] Forward QProcess retVal to main
+
+---
+ main.cpp    | 4 ++--
+ process.cpp | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/main.cpp b/main.cpp
+index 6f05471..65fb556 100644
+--- a/main.cpp
++++ b/main.cpp
+@@ -610,9 +610,9 @@ int main(int argc, char **argv)
+         process.start(defaultArgs);
+     }
+ 
+-    app.exec();
++    int ret = app.exec();
+     if (!fireAndForget)
+         close(serverSocket);
+-    return 0;
++    return ret;
+ }
+ 
+diff --git a/process.cpp b/process.cpp
+index c6fbe2e..c607a0d 100644
+--- a/process.cpp
++++ b/process.cpp
+@@ -209,8 +209,8 @@ void Process::finished(int exitCode, QProcess::ExitStatus exitStatus)
+     else
+         printf("Process stopped\n");
+     if (!mBeingRestarted) {
+-        qDebug() << "quit";
+-        qApp->quit();
++        qDebug() << "finished" << exitCode << exitStatus;
++        qApp->exit(exitStatus!=QProcess::NormalExit ? exitCode : 0);
+     }
+ }
+ 
+-- 
+2.34.1
+
