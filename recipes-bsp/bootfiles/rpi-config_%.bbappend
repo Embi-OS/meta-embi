@@ -1,9 +1,18 @@
+FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
+
+SRC_URI:append = " \
+    file://config.txt.in \
+"
+
+USE_DEFAULT_CONFIG ?= "0"
+
 ALSA_AUDIO ?= "off"
 MAX_FRAMEBUFFERS ?= "2"
 
 ENABLE_TOUCH_DISPLAY ?= "0"
 ENABLE_TOUCH_DISPLAY_2_7_INCH ?= "0"
 ENABLE_TOUCH_DISPLAY_2_5_INCH ?= "0"
+TOUCH_DISPLAY_ROTATION ?= "90"
 
 ENABLE_WAVESHARE_7_INCH_C_DISPLAY ?= "0"
 WAVESHARE_7_INCH_C_DISPLAY_I2C ?= "i2c1"
@@ -29,21 +38,21 @@ do_deploy:append() {
     if [ "${ENABLE_TOUCH_DISPLAY}" = "1" ]; then
         echo >> $CONFIG
         echo "# Enable Touch Display" >> $CONFIG
-        echo "dtoverlay=vc4-kms-dsi-7inch" >> $CONFIG
+        echo "dtoverlay=vc4-kms-dsi-7inch,rotation=${TOUCH_DISPLAY_ROTATION}" >> $CONFIG
     fi
     
     # Touch Display 2 7-inch
     if [ "${ENABLE_TOUCH_DISPLAY_2_7_INCH}" = "1" ]; then
         echo >> $CONFIG
         echo "# Enable Touch Display 2 7-inch" >> $CONFIG
-        echo "dtoverlay=vc4-kms-dsi-ili9881-7inch" >> $CONFIG
+        echo "dtoverlay=vc4-kms-dsi-ili9881-7inch,rotation=${TOUCH_DISPLAY_ROTATION}" >> $CONFIG
     fi
     
     # Touch Display 2 5-inch
     if [ "${ENABLE_TOUCH_DISPLAY_2_5_INCH}" = "1" ]; then
         echo >> $CONFIG
         echo "# Enable Touch Display 2 5-inch" >> $CONFIG
-        echo "dtoverlay=vc4-kms-dsi-ili9881-5inch" >> $CONFIG
+        echo "dtoverlay=vc4-kms-dsi-ili9881-5inch,rotation=${TOUCH_DISPLAY_ROTATION}" >> $CONFIG
     fi
     
     # Waveshare 7_0_inchC display 
@@ -71,5 +80,10 @@ do_deploy:append() {
     # Reduce config.txt file size by removing useless lines
     sed -i '/^#[^ ]/d' $CONFIG
     sed -i '/^$/N;/^\n$/D' $CONFIG
+    
+    # Use default config instead
+    if [ "${USE_DEFAULT_CONFIG}" = "1" ]; then
+        install -m 644 ${WORKDIR}/config.txt.in $CONFIG
+    fi
 }
 
