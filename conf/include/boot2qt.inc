@@ -7,7 +7,7 @@
 # set product version
 PRODUCT_COMPANY_NAME = "Embi"
 PRODUCT_COMPANY_NAME_LOWER = "embi"
-PRODUCT_VERSION ?= "25.11.0"
+PRODUCT_VERSION ?= "1.0.0"
 PRODUCT_VERSION_SHORT = "${@''.join('%02d' % int(x) for x in (d.getVar('PRODUCT_VERSION') or '0.0.0').split('.'))}"
 PRODUCT_VERSION_NAME ?= ""
 PRODUCT_IMAGE_BASENAME = "${PRODUCT_COMPANY_NAME_LOWER}-image"
