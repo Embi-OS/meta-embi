@@ -12,7 +12,7 @@ software =
                 device = "/dev/boot";
                 filesystem = "vfat";
                 preserve-attributes = true;
-                path = "/"
+                path = "/";
             },
             {
                 filename = "@@META_SWUPDATE_TARGET_IMAGE_FILE@@";
