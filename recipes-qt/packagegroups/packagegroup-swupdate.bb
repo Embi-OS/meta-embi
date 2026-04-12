@@ -1,5 +1,5 @@
 DESCRIPTION = "SWUpdate packagegroup"
-SUMMARY = "Packagegroups which provide SWUpdate releated packages"
+SUMMARY = "Packagegroups which provide SWUpdate related packages"
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 

@@ -12,10 +12,11 @@ SRC_URI += "\
 "
 
 do_install:append () {
+    install -d ${D}/www/images/
     install -m 644 ${WORKDIR}/background.jpg ${D}/www/images/
     install -m 644 ${WORKDIR}/favicon.png ${D}/www/images/
     install -m 644 ${WORKDIR}/logo.png ${D}/www/images/
-	
+
     install -d ${D}${sysconfdir}/swupdate/
     install -d ${D}${sysconfdir}/swupdate/conf.d/
     rm -f ${D}${libdir}/swupdate/conf.d/10-mongoose-args
@@ -30,7 +31,7 @@ do_install:append () {
 
     echo "${MACHINE} ${META_SWUPDATE_HW_REVISION}" > ${WORKDIR}/hwrevision
     install -m 644 ${WORKDIR}/hwrevision ${D}${sysconfdir}
-    
+
     echo "${PRODUCT_VERSION}" > ${WORKDIR}/swversion
     install -m 644 ${WORKDIR}/swversion ${D}${sysconfdir}
 }

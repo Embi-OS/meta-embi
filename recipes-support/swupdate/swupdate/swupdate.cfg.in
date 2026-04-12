@@ -17,7 +17,7 @@ webserver :
 {
     api               = 2;
     timeout           = 20;
-    listening_ports   = @MONGOOSE_PORT@;
+    listening_ports   = 8080;
 };
 
 gservice :

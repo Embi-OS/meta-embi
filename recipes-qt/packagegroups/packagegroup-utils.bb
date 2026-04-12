@@ -1,5 +1,5 @@
 DESCRIPTION = "Utils packagegroup"
-SUMMARY = "Packagegroups which provide cli releated packages"
+SUMMARY = "Packagegroups which provide CLI related packages"
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
@@ -18,6 +18,7 @@ RDEPENDS:packagegroup-utils = "\
 
 SUMMARY:packagegroup-utils-cli = "Recommended cli utils for any image"
 RRECOMMENDS:packagegroup-utils-cli = "\
+    bash \
     can-utils \
     can-utils-cantest \
     dosfstools \
@@ -42,4 +43,3 @@ RRECOMMENDS:packagegroup-utils-board = "\
     raspi-utils \
     boot-mount \
 "
-

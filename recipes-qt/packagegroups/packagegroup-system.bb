@@ -1,5 +1,5 @@
 DESCRIPTION = "System packagegroup"
-SUMMARY = "Packagegroups which provide system releated packages"
+SUMMARY = "Packagegroups which provide system related packages"
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
@@ -43,7 +43,7 @@ RRECOMMENDS:packagegroup-system-fonts = "\
 SUMMARY:packagegroup-system-canbus = "Recommended for using CAN Bus"
 RRECOMMENDS:packagegroup-system-canbus = "\
     libsocketcan \
-    canutils \
+    can-utils \
 "
 
 SUMMARY:packagegroup-system-samba = "Recommended for using Samba"

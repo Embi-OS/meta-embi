@@ -7,7 +7,8 @@ StartLimitBurst=5
 OnFailure=b2qt-recovery.service
 
 [Service]
-User=root
+User=@PRODUCT_APP_SERVICE_USER@
+Group=@PRODUCT_APP_SERVICE_GROUP@
 ExecStart=/usr/bin/appcontroller /etc/default/b2qt
 Restart=on-failure
 RestartSec=3s

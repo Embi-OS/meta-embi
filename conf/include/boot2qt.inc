@@ -7,9 +7,9 @@
 # set product version
 PRODUCT_COMPANY_NAME = "Embi"
 PRODUCT_COMPANY_NAME_LOWER = "embi"
+PRODUCT_VERSION_NAME ?= ""
 PRODUCT_VERSION ?= "1.0.0"
 PRODUCT_VERSION_SHORT = "${@''.join('%02d' % int(x) for x in (d.getVar('PRODUCT_VERSION') or '0.0.0').split('.'))}"
-PRODUCT_VERSION_NAME ?= ""
 PRODUCT_IMAGE_BASENAME = "${PRODUCT_COMPANY_NAME_LOWER}-image"
 PRODUCT_IMAGE_BRANCH ?= "mmc"
 PRODUCT_IMAGE_NAME = "${PRODUCT_IMAGE_BASENAME}-${PRODUCT_IMAGE_BRANCH}"
@@ -35,6 +35,7 @@ DISTRO_FEATURES:remove = "virtualization"
 # remove debug-tweaks for production build
 IMAGE_FEATURES:remove = "debug-tweaks"
 EXTRA_IMAGE_FEATURES:remove = "debug-tweaks"
+IMAGE_FEATURES:remove = "tools-debug tools-profile"
 
 # append locales
 IMAGE_LINGUAS:append = " \
