@@ -4,6 +4,8 @@ Meta layer for Embi-OS Software Stack
 # Basic build
 For a basic first build simply run the following commands
 ```bash
+sudo apt-get install build-essential chrpath cpio debianutils diffstat file gawk gcc git iputils-ping libacl1 locales python3 python3-git python3-jinja2 python3-pexpect python3-pip python3-subunit socat texinfo unzip wget xz-utils zstd
+
 curl https://storage.googleapis.com/git-repo-downloads/repo > ~/.local/bin/repo
 chmod a+rx ~/.local/bin/repo
 
