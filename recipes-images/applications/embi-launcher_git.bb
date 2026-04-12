@@ -34,6 +34,10 @@ EXTRA_OECMAKE += " \
 do_install:append() {
     install -m 0755 -d ${D}${systemd_unitdir}/system
     install -m 0644 ${WORKDIR}/embi-launcher.service ${D}${systemd_unitdir}/system/
+    sed -i \
+        -e 's|@PRODUCT_APP_SERVICE_USER@|${PRODUCT_APP_SERVICE_USER}|g' \
+        -e 's|@PRODUCT_APP_SERVICE_GROUP@|${PRODUCT_APP_SERVICE_GROUP}|g' \
+        ${D}${systemd_unitdir}/system/embi-launcher.service
 }
 
 FILES:${PN} += " \
