@@ -12,6 +12,9 @@ repo sync
 
 export MACHINE=raspberrypi-armv8 && source ./setup-environment.sh
 
+bitbake meta-b2qt-embedded-qbsp --runall=fetch
+bitbake meta-b2qt-embedded-qbsp
+
 bitbake b2qt-image-swu --runall=fetch
 bitbake b2qt-image-swu
 
