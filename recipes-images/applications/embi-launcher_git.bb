@@ -29,6 +29,8 @@ BUILD_TYPE ?= "Release"
 EXTRA_OECMAKE += " \
     -DCMAKE_BUILD_TYPE=${BUILD_TYPE} \
     -DENABLE_OPTIMIZATION=ON \
+    -DBOOT2QT=ON \
+    -DRASPBERRY_PI=ON \
 "
 
 do_install:append() {
