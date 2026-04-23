@@ -3,7 +3,7 @@ DESCRIPTION = "Meta task for QBSP creation"
 QBSP_NAME                = "Boot2Qt ${QT_VERSION}"
 QBSP_INSTALL_PATH        = "/${QT_VERSION}/Boot2Qt/${MACHINE}"
 
-QBSP_SDK_TASK 		 = "meta-toolchain-b2qt-embedded-qt6-sdk"
+QBSP_SDK_TASK            = "meta-toolchain-b2qt-embedded-qt6-sdk"
 QBSP_IMAGE_TASK          = "b2qt-image"
 
 IMAGE_BASENAME           = "${PRODUCT_IMAGE_NAME}"
