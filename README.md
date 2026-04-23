@@ -1,18 +1,31 @@
 # meta-embi
 Meta layer for Embi-OS Software Stack
 
-# Basic build
-For a basic first build simply run the following commands
+## Prerequisites
+
+### System packages (Ubuntu/Debian example)
+
 ```bash
-sudo apt-get install build-essential chrpath cpio debianutils diffstat file gawk gcc git iputils-ping libacl1 locales python3 python3-git python3-jinja2 python3-pexpect python3-pip python3-subunit socat texinfo unzip wget xz-utils zstd git-lfs lz4
+sudo apt update
+sudo apt install -y \
+    git wget diffstat unzip texinfo gcc build-essential chrpath socat \
+    cpio pipx python3 python3-pip python3-pexpect xz-utils debianutils \
+    iputils-ping python3-git python3-jinja2 libsdl1.2-dev \
+    xterm
+pipx install kas --system-site-packages
+```
 
-curl https://storage.googleapis.com/git-repo-downloads/repo > ~/.local/bin/repo
-chmod a+rx ~/.local/bin/repo
+## Quick start
 
-repo init -u https://github.com/Embi-OS/embi-manifest -m stable.xml
-repo sync
+For a basic first build simply run the following commands
 
-export MACHINE=raspberrypi-armv8 && source ./setup-environment.sh
+```bash
+git clone git@github.com:Embi-OS/embi-kas.git
+
+# To build with latest meta-embi revision (only use in dev mode)
+kas shell embi-kas/latest.yml
+# To build with stable meta-embi revision (use for release build)
+kas shell embi-kas/stable.yml
 
 bitbake meta-b2qt-embedded-qbsp --runall=fetch
 bitbake meta-b2qt-embedded-qbsp
@@ -20,11 +33,8 @@ bitbake meta-b2qt-embedded-qbsp
 bitbake b2qt-image-swu --runall=fetch
 bitbake b2qt-image-swu
 
-# To build with voh release-mode
-export BB_ENV_PASSTHROUGH_ADDITIONS="$BB_ENV_PASSTHROUGH_ADDITIONS PRODUCT_VERSION"
-export BB_ENV_PASSTHROUGH_ADDITIONS="$BB_ENV_PASSTHROUGH_ADDITIONS PRODUCT_VERSION_NAME"
-export BB_ENV_PASSTHROUGH_ADDITIONS="$BB_ENV_PASSTHROUGH_ADDITIONS PRODUCT_IMAGE_BRANCH"
-PRODUCT_VERSION="25.10.0" PRODUCT_VERSION_NAME="" PRODUCT_IMAGE_BRANCH="usb" bitbake b2qt-image-swu
+# To build with embi release-mode (e.g. using build script build_yocto.sh)
+PRODUCT_VERSION="25.10.0" PRODUCT_VERSION_SUFFIX="stable" bitbake b2qt-image-swu
 
 # Print VARIABLE content
 bitbake -e b2qt-image-swu | grep "^DISTRO_FEATURES"
