@@ -7,11 +7,11 @@
 # include bitbake config
 include conf/include/bitbake.inc
 
-# include boot2qt config
-include conf/include/boot2qt.inc
-
 # include board config
 include conf/include/board.inc
+
+# include boot2qt config
+include conf/include/boot2qt.inc
 
 # include user config
 include conf/include/user.inc
