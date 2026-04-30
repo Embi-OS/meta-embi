@@ -10,7 +10,7 @@ DEFAULT_CONFIG_VERSION ?= "0"
 ENABLE_TOUCH_DISPLAY ?= "0"
 ENABLE_TOUCH_DISPLAY_2_7_INCH ?= "0"
 ENABLE_TOUCH_DISPLAY_2_5_INCH ?= "0"
-TOUCH_DISPLAY_ROTATION ?= "90"
+TOUCH_DISPLAY_ROTATION ?= "0"
 
 ENABLE_WAVESHARE_7_INCH_C_DISPLAY ?= "0"
 WAVESHARE_7_INCH_C_DISPLAY_I2C ?= "i2c1"
@@ -36,6 +36,7 @@ do_deploy:append() {
     case "${DEFAULT_CONFIG_VERSION}" in
         1)
             enable_touch_display="1"
+            touch_display_rotation="0"
             enable_iqaudio_dac="1"
             ;;
         2)
