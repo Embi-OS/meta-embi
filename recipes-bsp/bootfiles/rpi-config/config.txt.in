@@ -47,19 +47,3 @@ dtoverlay=dwc2,dr_mode=host
 
 [all]
 enable_uart=1
-
-# Enable Touch Display
-#dtoverlay=vc4-kms-dsi-7inch,rotation=0
-
-# Enable Touch Display 2
-dtoverlay=vc4-kms-dsi-ili9881-7inch,rotation=90
-
-# Enable waveshare 7_0_inchC display
-#dtoverlay=vc4-kms-dsi-waveshare-panel,7_0_inchC,i2c1
-
-# Enable IQAudio DAC
-#dtoverlay=rpi-dacpro
-
-# Enable Audio Amp SHIM
-dtoverlay=hifiberry-dac
-gpio=25=op,dh
