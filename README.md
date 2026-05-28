@@ -23,9 +23,9 @@ For a basic first build simply run the following commands
 git clone git@github.com:Embi-OS/embi-kas.git
 
 # To build with latest meta-embi revision (only use in dev mode)
-kas shell embi-kas/latest.yml
+kas shell --update embi-kas/latest.yml
 # To build with stable meta-embi revision (use for release build)
-kas shell embi-kas/stable.yml
+kas shell --update embi-kas/stable.yml
 
 bitbake meta-b2qt-embedded-qbsp --runall=fetch
 bitbake meta-b2qt-embedded-qbsp
