@@ -29,7 +29,7 @@ QT_COMMERCIAL_MODULES = "1"
 USE_QT_DEMO_LAUNCHER = "0"
 
 # remove webengine for faster build time
-#DISTRO_FEATURES:remove = "webengine ld-is-gold"
+DISTRO_FEATURES:remove = "webengine ld-is-gold"
 
 # remove virtualization
 DISTRO_FEATURES:remove = "virtualization"
